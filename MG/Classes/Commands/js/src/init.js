@@ -1,0 +1,2 @@
+window.macgap = require('macgap');
+})();

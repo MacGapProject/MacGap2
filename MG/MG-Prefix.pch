@@ -5,5 +5,20 @@
 //
 
 #ifdef __OBJC__
+
+    #ifdef _DEBUG
+        #define DebugNSLog(format, ...) NSLog(format, ## __VA_ARGS__)
+        #define DLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
+
+    #else
+        #define DebugNSLog(format, ...)
+        #define DLog(...)
+    #endif
+    #define ALog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
+
     #import <Cocoa/Cocoa.h>
+    #import "Constants.h"
+
+
+
 #endif
