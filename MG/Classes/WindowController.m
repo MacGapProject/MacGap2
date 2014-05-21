@@ -20,7 +20,7 @@
 @property (readwrite, assign) BOOL initialized;
 
 -(void) notificationCenter;
-
+-(void) setWindowParams;
 
 @end
 
@@ -54,7 +54,8 @@
     [super windowDidLoad];
  
     [self.webView setMainFrameURL:[self.url absoluteString]];
-    [self.window setTitle:[self.settings objectForKey:@"name"]];
+   
+    
 }
 
 - (id) initWithURL:(NSString *) relativeURL{
@@ -86,7 +87,7 @@
     NSString *applicationSupportFile = [@"~/Library/Application Support/" stringByExpandingTildeInPath];
     NSString *savePath = [NSString pathWithComponents:[NSArray arrayWithObjects:applicationSupportFile, cappBundleName, @"LocalStorage", nil]];
  
-    NSString *configPath = [[NSBundle mainBundle] pathForResource:@"config" ofType:@"json"];
+    NSString *configPath = [[NSBundle mainBundle] pathForResource:@"./public/config" ofType:@"json"];
     NSMutableDictionary *config = [[[NSString alloc] initWithContentsOfFile:configPath encoding:NSUTF8StringEncoding error:NULL] JSONObject];
     
     NSDictionary *plugins = [config objectForKey:@"plugins"];
@@ -127,11 +128,48 @@
         
         self.initialized = YES;
     }
-
+    
+    
 
 }
 
-
+- (void) setWindowParams
+{
+    NSDictionary* params = [self.settings objectForKey:@"window"];
+  
+    NSRect frame = [[self window] frame];
+    
+    if([params objectForKey:@"width"] != nil) {
+        frame.size.width = [[params objectForKey:@"width"] doubleValue];
+    }
+    
+    if([params objectForKey:@"height"]) {
+        frame.size.height = [[params objectForKey:@"height"] doubleValue];
+        
+    }
+    
+    if([params objectForKey:@"min_width"] && [params objectForKey:@"min_height"]) {
+        [self.window setMinSize: NSMakeSize( [[params objectForKey:@"min_width"] doubleValue], [[params objectForKey:@"min_height"] doubleValue] ) ];
+    }
+    
+    if([params objectForKey:@"max_width"] && [params objectForKey:@"max_height"]) {
+        [self.window setMaxSize: NSMakeSize( [[params objectForKey:@"max_width"] doubleValue], [[params objectForKey:@"max_height"] doubleValue] ) ];
+    }
+    
+    
+    if([params objectForKey:@"title"]) {
+        [[self window] setTitle: [params objectForKey:@"title"]];
+    }
+    
+    
+    if([[params objectForKey:@"position"] isEqualToString:@"center"]) {
+        [[self window] center];
+    }
+    
+    [[self window] setFrame:frame display: YES];
+    
+  
+}
 
 #pragma mark -
 #pragma mark Plugin Registration

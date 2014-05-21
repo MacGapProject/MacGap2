@@ -26,6 +26,7 @@
 
 - (void) applicationDidFinishLaunching:(NSNotification *)aNotification {
     self.windowController = [[WindowController alloc] initWithURL: kStartPage];
+    [self.windowController setWindowParams];
     [self.windowController showWindow:self];
 }
 

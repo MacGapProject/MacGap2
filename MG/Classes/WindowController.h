@@ -46,6 +46,6 @@
 - (id)getCommandInstance:(NSString*)pluginName;
 - (void)registerPlugin:(Plugin*)plugin withClassName:(NSString*)className;
 - (void)registerPlugin:(Plugin*)plugin withPluginName:(NSString*)pluginName;
-
+- (void) setWindowParams;
 
 @end

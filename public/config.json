@@ -6,6 +6,16 @@
     "plugins" : {
                 "Window":"Window",
                  "Menu":"Menu"
-                 }
+                 },
+    "window" : {
+        "title" : "MacGap",
+        "width" : 900,
+        "height" : 600,
+        "position": "center",
+        "min_width": 400,
+        "min_height": 200,
+        "max_width": 1200,
+        "max_height": 800
+    }
   
 }

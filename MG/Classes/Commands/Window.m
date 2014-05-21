@@ -80,8 +80,12 @@
 {
     NSRect frame = [self.windowController window].frame;
     
+    frame.origin.y += frame.size.height;
+    frame.origin.y -= [[command argumentAtIndex:1] doubleValue];
+   
     frame.size.width  = [[command  argumentAtIndex:0] doubleValue];
     frame.size.height = [[command argumentAtIndex:1] doubleValue];
+    
     [[self.windowController window] setFrame:frame display:YES];
 }
 
