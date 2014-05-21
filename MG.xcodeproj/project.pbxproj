@@ -40,6 +40,10 @@
 		2237E6EF192BAF85001E1393 /* public in Resources */ = {isa = PBXBuildFile; fileRef = 2237E6EE192BAF85001E1393 /* public */; };
 		2237E6F6192BB09A001E1393 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2237E65E192B0177001E1393 /* MainMenu.xib */; };
 		2237E6F7192BB09C001E1393 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2237E6F1192BB032001E1393 /* MainWindow.xib */; };
+		2237E6FC192C17AA001E1393 /* Menu.m in Sources */ = {isa = PBXBuildFile; fileRef = 2237E6FB192C17AA001E1393 /* Menu.m */; };
+		2237E6FF192C17CF001E1393 /* Window.m in Sources */ = {isa = PBXBuildFile; fileRef = 2237E6FE192C17CF001E1393 /* Window.m */; };
+		2237E701192C1985001E1393 /* window.js in Sources */ = {isa = PBXBuildFile; fileRef = 2237E700192C1985001E1393 /* window.js */; };
+		22ABE342192C273200497794 /* macgap.js in Resources */ = {isa = PBXBuildFile; fileRef = 2237E6C1192B8FA4001E1393 /* macgap.js */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +108,12 @@
 		2237E6E5192B90EE001E1393 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
 		2237E6EE192BAF85001E1393 /* public */ = {isa = PBXFileReference; lastKnownFileType = folder; path = public; sourceTree = "<group>"; };
 		2237E6F2192BB032001E1393 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = MG/Base.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		2237E6FA192C17AA001E1393 /* Menu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Menu.h; sourceTree = "<group>"; };
+		2237E6FB192C17AA001E1393 /* Menu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Menu.m; sourceTree = "<group>"; };
+		2237E6FD192C17CF001E1393 /* Window.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Window.h; sourceTree = "<group>"; };
+		2237E6FE192C17CF001E1393 /* Window.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Window.m; sourceTree = "<group>"; };
+		2237E700192C1985001E1393 /* window.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = window.js; sourceTree = "<group>"; };
+		22ABE343192C5E3500497794 /* MacGap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MacGap.h; path = Classes/Commands/MacGap.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -220,6 +230,7 @@
 			children = (
 				2237E6BD192B8FA4001E1393 /* Commands */,
 				2237E689192B09C5001E1393 /* WindowController.h */,
+				22ABE343192C5E3500497794 /* MacGap.h */,
 				2237E68A192B09C5001E1393 /* WindowController.m */,
 				2237E69B192B0ED9001E1393 /* WebViewDelegate.h */,
 				2237E69C192B0ED9001E1393 /* WebViewDelegate.m */,
@@ -251,6 +262,10 @@
 				2237E6CE192B8FA4001E1393 /* Plugin.m */,
 				2237E6CF192B8FA4001E1393 /* PluginResult.h */,
 				2237E6D0192B8FA4001E1393 /* PluginResult.m */,
+				2237E6FA192C17AA001E1393 /* Menu.h */,
+				2237E6FB192C17AA001E1393 /* Menu.m */,
+				2237E6FD192C17CF001E1393 /* Window.h */,
+				2237E6FE192C17CF001E1393 /* Window.m */,
 			);
 			name = Commands;
 			path = Classes/Commands;
@@ -276,6 +291,7 @@
 				2237E6C8192B8FA4001E1393 /* menuitem.js */,
 				2237E6C9192B8FA4001E1393 /* require.js */,
 				2237E6CA192B8FA4001E1393 /* utils.js */,
+				2237E700192C1985001E1393 /* window.js */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -366,6 +382,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22ABE342192C273200497794 /* macgap.js in Resources */,
 				2237E6EF192BAF85001E1393 /* public in Resources */,
 				2237E654192B0177001E1393 /* InfoPlist.strings in Resources */,
 				2237E662192B0177001E1393 /* Images.xcassets in Resources */,
@@ -397,7 +414,9 @@
 				2237E6D3192B8FA4001E1393 /* bridge.js in Sources */,
 				2237E6D5192B8FA4001E1393 /* init.js in Sources */,
 				2237E6DA192B8FA4001E1393 /* utils.js in Sources */,
+				2237E6FF192C17CF001E1393 /* Window.m in Sources */,
 				2237E6D9192B8FA4001E1393 /* require.js in Sources */,
+				2237E6FC192C17AA001E1393 /* Menu.m in Sources */,
 				2237E68C192B09C5001E1393 /* WindowController.m in Sources */,
 				2237E6A0192B0F46001E1393 /* CommandDelegate.m in Sources */,
 				2237E6DD192B8FA4001E1393 /* PluginResult.m in Sources */,
@@ -408,6 +427,7 @@
 				2237E6D7192B8FA4001E1393 /* menu.js in Sources */,
 				2237E6D6192B8FA4001E1393 /* macgap.js in Sources */,
 				2237E6E7192B90EE001E1393 /* NSData+Base64.m in Sources */,
+				2237E701192C1985001E1393 /* window.js in Sources */,
 				2237E6D1192B8FA4001E1393 /* CommandQueue.m in Sources */,
 				2237E656192B0177001E1393 /* main.m in Sources */,
 			);

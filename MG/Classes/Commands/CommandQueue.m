@@ -14,7 +14,7 @@
 
 @interface CommandQueue () {
     NSInteger _lastCommandQueueFlushRequestId;
-    __weak WindowController* _windowController;
+    WindowController* _windowController;
     NSMutableArray* _queue;
     BOOL _currentlyExecuting;
 }
@@ -65,10 +65,11 @@
 
 - (void)fetchCommandsFromJs
 {
+
     // Grab all the queued commands from the JS side.
     NSString* queuedCommandsJSON = [_windowController.webView stringByEvaluatingJavaScriptFromString:
-                                    @"cordova.require('cordova/exec').nativeFetchMessages()"];
-    
+                                    @"macgap.require('macgap/exec').nativeFetchMessages()"];
+ 
     [self enqueCommandBatch:queuedCommandsJSON];
    
 }
@@ -129,7 +130,7 @@
     
     // Find the proper selector to call.
     NSString* methodName = [NSString stringWithFormat:@"%@:", command.methodName];
- 
+  
     SEL normalSelector = NSSelectorFromString(methodName);
     
     if ([obj respondsToSelector:normalSelector]) {

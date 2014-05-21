@@ -9,13 +9,15 @@
 #import <Foundation/Foundation.h>
 #import <WebKit/WebKit.h>
 
-@class WindowController;
+@class WindowController, Window;
 
 @interface WebViewDelegate : NSObject {
-     NSMenu *mainMenu;
+    NSMenu *mainMenu;
+    Window* window;
 }
 
 @property (nonatomic, retain) WindowController *windowController;
+@property (nonatomic, retain) Window* window;
 
 - (id) initWithMenu:(NSMenu*)menu;
 

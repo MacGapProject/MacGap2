@@ -1,4 +1,7 @@
 define("macgap", function(require, exports, module) {
+var events = require('macgap/event');
+var utils = require('macgap/utils');
+
 var MacGap = {
     define:define,
     require:require,
@@ -16,6 +19,30 @@ var MacGap = {
         INVALID_ACTION: 7,
         JSON_EXCEPTION: 8,
         ERROR: 9
+    },
+
+     /**
+     * Called by native code when returning successful result from an action.
+     */
+    callbackSuccess: function(callbackId, args) {
+        try {
+            macgap.callbackFromNative(callbackId, true, args.status, [args.message], args.keepCallback);
+        } catch (e) {
+            console.log("Error in error callback: " + callbackId + " = "+e);
+        }
+    },
+
+    /**
+     * Called by native code when returning error result from an action.
+     */
+    callbackError: function(callbackId, args) {
+        // TODO: Deprecate callbackSuccess and callbackError in favour of callbackFromNative.
+        // Derive success from status.
+        try {
+            macgap.callbackFromNative(callbackId, false, args.status, [args.message], args.keepCallback);
+        } catch (e) {
+            console.log("Error in error callback: " + callbackId + " = "+e);
+        }
     },
 
     callbackFromNative: function(callbackId, success, status, args, keepCallback) {
@@ -36,6 +63,8 @@ var MacGap = {
 
 };
 
+
 module.exports = MacGap;
+
 });
 

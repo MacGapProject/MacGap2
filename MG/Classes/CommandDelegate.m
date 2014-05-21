@@ -6,6 +6,7 @@
 //
 //
 
+#import "JSON.h"
 #import "CommandDelegate.h"
 #import "Plugin.h"
 #import "PluginResult.h"
@@ -84,6 +85,20 @@
     
     [self evalJsHelper:js];
 
+}
+- (void) sendPluginEvent:(NSString *)event forPlugin:(NSString *)plugin {
+    [self sendPluginEvent: event forPlugin: plugin withData:nil];
+}
+
+- (void) sendPluginEvent:(NSString *)event forPlugin:(NSString *)plugin withData:(NSDictionary *)data {
+    NSString* args = nil;
+    
+    if(data != nil) {
+        args = [data JSONString];
+    }
+    
+    NSString* js =[NSString stringWithFormat:@"macgap.%@.trigger(%@, %@)", [plugin lowercaseString], event, args];
+    [self evalJsHelper:js];
 }
 
 - (void)evalJs:(NSString*)js{

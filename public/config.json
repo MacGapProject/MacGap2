@@ -1,0 +1,11 @@
+{
+    "main": "public/index.html",
+    "name": "MacGap",
+    "description": "",
+    "version": "2.0.0",
+    "plugins" : {
+                "Window":"Window",
+                 "Menu":"Menu"
+                 }
+  
+}

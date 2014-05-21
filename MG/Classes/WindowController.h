@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import <WebKit/WebKit.h>
+#import "MacGap.h"
 #import "JSCommand.h"
 #import "CommandDelegate.h"
 #import "CommandQueue.h"
@@ -18,7 +19,12 @@
 @interface WindowController : NSWindowController
 {
     IBOutlet WebView* webView;
+    IBOutlet NSWindow* window;
     WebViewDelegate* webViewDelegate;
+    @protected
+    CommandQueue* _commandQueue;
+    @protected
+    CommandDelegate* _commandDelegate;
 }
 
 @property (nonatomic, readonly, strong) NSMutableDictionary* pluginObjects;

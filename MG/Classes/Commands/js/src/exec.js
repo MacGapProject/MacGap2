@@ -3,8 +3,7 @@ define("macgap/exec", function(require, exports, module) {
  * Creates a gap bridge iframe used to notify the native code about queued
  * commands.
  */
-var macgap = require('macgap'),
-    utils = require('macgap/utils'),
+var utils = require('macgap/utils'),
     base64 = require('macgap/base64'),
     execIframe,
     requestCount = 0,
@@ -75,7 +74,6 @@ function sendToNative() {
     execIframe.src = "mg://ready";
 }
 
-Exec.jsToNativeModes = jsToNativeModes;
 
 
 Exec.nativeFetchMessages = function() {

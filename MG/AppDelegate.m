@@ -26,10 +26,6 @@
 
 - (void) applicationDidFinishLaunching:(NSNotification *)aNotification {
     self.windowController = [[WindowController alloc] initWithURL: kStartPage];
-  //  [self.windowController showWindow: [NSApplication sharedApplication].delegate];
- //   self.windowController.webView.alphaValue = 1.0;
-//    self.windowController.contentView.alphaValue = 1.0;
-  
     [self.windowController showWindow:self];
 }
 

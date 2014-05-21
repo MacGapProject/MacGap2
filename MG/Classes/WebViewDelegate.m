@@ -11,7 +11,7 @@
 
 @implementation WebViewDelegate
 
-@synthesize windowController;
+@synthesize windowController, window;
 
 - (id) initWithMenu:(NSMenu*)aMenu
 {
@@ -21,8 +21,19 @@
     
     mainMenu = aMenu;
     
-    
     return self;
+}
+
+- (void) webView:(WebView*)webView didClearWindowObject:(WebScriptObject*)windowScriptObject forFrame:(WebFrame *)frame
+{
+//    JSContextRef context = [frame globalContext];
+    
+    if (self.window == nil) {
+     
+        self.window = [windowController.commandDelegate getCommandInstance:@"Window"];
+    }
+    
+    [windowScriptObject setValue:self forKey:kWebScriptNamespace];
 }
 
 - (void)webView:(WebView *)sender runOpenPanelForFileButtonWithResultListener:(id < WebOpenPanelResultListener >)resultListener allowMultipleFiles:(BOOL)allowMultipleFiles{
@@ -164,22 +175,26 @@
 - (void)webView:(WebView *)webView decidePolicyForNavigationAction:(NSDictionary *)actionInformation request:(NSURLRequest *)request frame:(WebFrame *)frame decisionListener:(id<WebPolicyDecisionListener>)listener
 {
     
-    
     NSURL *url = [request URL];
+   
     if ([[url scheme] isEqualToString:kCustomProtocolScheme]) {
-        if ([[url scheme] isEqualToString:@"gap"]) {
-            [windowController.commandQueue fetchCommandsFromJs];
-            //return NO;
-        }
-        if ([[url host] isEqualToString:kQueueHasMessage]) {
-    //        [bridge flushMessageQueue];
-        } else {
-            NSLog(@"Bridge: WARNING: Received unknown Bridge command %@://%@", kCustomProtocolScheme, [url path]);
-        }
+        [windowController.commandQueue fetchCommandsFromJs];
         [listener ignore];
     }  else {
         [listener use];
     }
+}
+
+#pragma mark WebScripting protocol
+
++ (BOOL) isSelectorExcludedFromWebScript:(SEL)selector
+{
+	return YES;
+}
+
++ (BOOL) isKeyExcludedFromWebScript:(const char*)name
+{
+	return NO;
 }
 
 

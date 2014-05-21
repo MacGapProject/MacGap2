@@ -28,6 +28,10 @@
 
 // Sends a plugin result to the JS. This is thread-safe.
 - (void)sendPluginResult:(PluginResult*)result callbackId:(NSString*)callbackId;
+
+- (void)sendPluginEvent:(NSString*)event forPlugin:(NSString*)plugin;
+- (void)sendPluginEvent:(NSString*)event forPlugin:(NSString*)plugin withData: (NSDictionary*) data;
+
 // Evaluates the given JS. This is thread-safe.
 - (void)evalJs:(NSString*)js;
 // Can be used to evaluate JS right away instead of scheduling it on the run-loop.

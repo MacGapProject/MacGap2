@@ -1,7 +1,7 @@
 define("macgap/menu", function(require, exports, module) {
 
-var macgap = require('macgap');
-var bridge = require('macgap/bridge');
+
+var exec = require('macgap/exec');
 var utils = require('macgap/utils');
 var menuitem = require('macgap/menuitem');
 var Menu = function(options) {
