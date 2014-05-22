@@ -44,6 +44,8 @@
 		2237E6FF192C17CF001E1393 /* Window.m in Sources */ = {isa = PBXBuildFile; fileRef = 2237E6FE192C17CF001E1393 /* Window.m */; };
 		2237E701192C1985001E1393 /* window.js in Sources */ = {isa = PBXBuildFile; fileRef = 2237E700192C1985001E1393 /* window.js */; };
 		22ABE342192C273200497794 /* macgap.js in Resources */ = {isa = PBXBuildFile; fileRef = 2237E6C1192B8FA4001E1393 /* macgap.js */; };
+		6F12AA30192DB13F00A56966 /* Dock.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F12AA2F192DB13F00A56966 /* Dock.m */; };
+		6F12AA32192DB88C00A56966 /* dock.js in Sources */ = {isa = PBXBuildFile; fileRef = 6F12AA31192DB88C00A56966 /* dock.js */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,6 +116,9 @@
 		2237E6FE192C17CF001E1393 /* Window.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Window.m; sourceTree = "<group>"; };
 		2237E700192C1985001E1393 /* window.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = window.js; sourceTree = "<group>"; };
 		22ABE343192C5E3500497794 /* MacGap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MacGap.h; path = Classes/Commands/MacGap.h; sourceTree = "<group>"; };
+		6F12AA2E192DB13F00A56966 /* Dock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dock.h; sourceTree = "<group>"; };
+		6F12AA2F192DB13F00A56966 /* Dock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dock.m; sourceTree = "<group>"; };
+		6F12AA31192DB88C00A56966 /* dock.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = dock.js; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -262,6 +267,8 @@
 				2237E6CE192B8FA4001E1393 /* Plugin.m */,
 				2237E6CF192B8FA4001E1393 /* PluginResult.h */,
 				2237E6D0192B8FA4001E1393 /* PluginResult.m */,
+				6F12AA2E192DB13F00A56966 /* Dock.h */,
+				6F12AA2F192DB13F00A56966 /* Dock.m */,
 				2237E6FA192C17AA001E1393 /* Menu.h */,
 				2237E6FB192C17AA001E1393 /* Menu.m */,
 				2237E6FD192C17CF001E1393 /* Window.h */,
@@ -292,6 +299,7 @@
 				2237E6C9192B8FA4001E1393 /* require.js */,
 				2237E6CA192B8FA4001E1393 /* utils.js */,
 				2237E700192C1985001E1393 /* window.js */,
+				6F12AA31192DB88C00A56966 /* dock.js */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -425,9 +433,11 @@
 				2237E6D8192B8FA4001E1393 /* menuitem.js in Sources */,
 				2237E6D4192B8FA4001E1393 /* exec.js in Sources */,
 				2237E6D7192B8FA4001E1393 /* menu.js in Sources */,
+				6F12AA30192DB13F00A56966 /* Dock.m in Sources */,
 				2237E6D6192B8FA4001E1393 /* macgap.js in Sources */,
 				2237E6E7192B90EE001E1393 /* NSData+Base64.m in Sources */,
 				2237E701192C1985001E1393 /* window.js in Sources */,
+				6F12AA32192DB88C00A56966 /* dock.js in Sources */,
 				2237E6D1192B8FA4001E1393 /* CommandQueue.m in Sources */,
 				2237E656192B0177001E1393 /* main.m in Sources */,
 			);
