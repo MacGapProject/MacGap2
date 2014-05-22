@@ -5,8 +5,9 @@
     "version": "2.0.0",
     "plugins" : {
                 "Window":"Window",
-                 "Menu":"Menu"
-                 },
+                "Menu":"Menu",
+                "Dock":"Dock"
+                },
     "window" : {
         "title" : "MacGap",
         "width" : 900,

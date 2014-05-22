@@ -23,9 +23,17 @@
   
 </head>
 <body>
-  
+    <script type="text/javascript" src="../macgap.js"></script>
+
   <script type="text/javascript" charset="utf-8">
-    
+      var a = macgap.window.getX();
+      console.log(a);
+
+      macgap.dock.setBadge('55');
+      
+      var a = macgap.dock.badge();
+      alert(a);
+
   </script>
   
   <h1>MacGap</h1>
