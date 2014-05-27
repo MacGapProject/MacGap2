@@ -5,27 +5,33 @@
 //  Created by Tim Debo on 5/20/14.
 //
 //
+#import <JavaScriptCore/JavaScriptCore.h>
 
-#import "Plugin.h"
-@class JSCommand;
+@class WindowController, WebView;
 
-@interface Window : Plugin {
-    CGRect _oldRestoreFrame;
-    NSString* callbackId;
-}
-@property (strong) NSString* callbackId;
+@protocol WindowExports <JSExport>
 
-- (Boolean) isMaximized;
+@property (readonly) BOOL isMaximized;
+@property (readonly) CGFloat x;
+@property (readonly) CGFloat y;
+
+- (void) move: (NSNumber*) xCoord y: (NSNumber*) yCoord;
+- (void) open: (NSDictionary*) props;
+- (void) resize: (NSNumber*) width height: (NSNumber*) height;
+- (void) minimize;
+- (void) maximize;
+- (void) toggleFullscreen;
+- (void) title: (NSString*) title;
+
+@end
+
+@interface Window : NSObject <WindowExports>
+
+- (Window*) initWithWindowController: (WindowController*)windowController andWebview: (WebView*) webView;
 - (CGFloat) getX;
 - (CGFloat) getY;
 
-- (void) open: (JSCommand*) command;
-- (void) move: (JSCommand*) command;
-- (void) resize: (JSCommand*) command;
-- (void) minimize: (JSCommand*) command;
-- (void) maximize: (JSCommand*) command;
-- (void) toggleFullscreen: (JSCommand*) command;;
-- (void) title: (JSCommand*) command;
-- (void) windowMinimized:(NSNotification*)notification;
-
 @end
+
+//@end
+

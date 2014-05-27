@@ -36,9 +36,8 @@
 
 @implementation WindowController
 
-@synthesize webView, url, initialized, webViewDelegate;
-@synthesize commandQueue = _commandQueue;
-@synthesize commandDelegate = _commandDelegate;
+@synthesize webView, url, initialized, webViewDelegate, jsContext;
+
 
 - (id)initWithWindow:(NSWindow *)window
 {
@@ -121,13 +120,6 @@
     [self.webView setShouldCloseWithWindow:NO];
     [self.webView setGroupName:@"MacGap"];
     self.pluginObjects = [[NSMutableDictionary alloc] initWithCapacity:20];
-    if ((self != nil) && !self.initialized) {
-      
-        _commandQueue = [[CommandQueue alloc] initWithWindowController:self];
-        _commandDelegate = [[CommandDelegate alloc] initWithWindowController:self];
-        
-        self.initialized = YES;
-    }
     
     
 
@@ -175,59 +167,59 @@
 #pragma mark Plugin Registration
 
 
-- (void)registerPlugin:(Plugin*)plugin withClassName:(NSString*)className
-{
-    if ([plugin respondsToSelector:@selector(setWindowController:)]) {
-        [plugin setWindowController:self];
-    }
-    
-    if ([plugin respondsToSelector:@selector(setCommandDelegate:)]) {
-        [plugin setCommandDelegate:_commandDelegate];
-    }
-    
-    [self.pluginObjects setObject:plugin forKey:className];
-    [plugin pluginInitialize];
-}
-
-- (void)registerPlugin:(Plugin*)plugin withPluginName:(NSString*)pluginName
-{
-    if ([plugin respondsToSelector:@selector(setWindowController:)]) {
-        [plugin setWindowController:self];
-    }
-    
-    if ([plugin respondsToSelector:@selector(setCommandDelegate:)]) {
-        [plugin setCommandDelegate:_commandDelegate];
-    }
-    
-    NSString* className = NSStringFromClass([plugin class]);
-    [self.pluginObjects setObject:plugin forKey:className];
-    [self.pluginsMap setValue:className forKey:[pluginName lowercaseString]];
-    [plugin pluginInitialize];
-}
-
-- (id)getCommandInstance:(NSString*)pluginName
-{
- 
-    NSString* className = [self.pluginsMap objectForKey:[pluginName lowercaseString]];
-    if (className == nil) {
-        className = [self.pluginsMap objectForKey:pluginName];
-      
-        if(className == nil)
-            return nil;
-    }
-    
-    id obj = [self.pluginObjects objectForKey:className];
-    if (!obj) {
-        obj = [[NSClassFromString(className)alloc] initWithWebView:webView];
-        
-        if (obj != nil) {
-            [self registerPlugin:obj withClassName:className];
-        } else {
-            NSLog(@"Plugin class %@ (pluginName: %@) does not exist.", className, pluginName);
-        }
-    }
-    return obj;
-}
+//- (void)registerPlugin:(Plugin*)plugin withClassName:(NSString*)className
+//{
+//    if ([plugin respondsToSelector:@selector(setWindowController:)]) {
+//        [plugin setWindowController:self];
+//    }
+//    
+//    if ([plugin respondsToSelector:@selector(setCommandDelegate:)]) {
+//        [plugin setCommandDelegate:_commandDelegate];
+//    }
+//    
+//    [self.pluginObjects setObject:plugin forKey:className];
+//    [plugin pluginInitialize];
+//}
+//
+//- (void)registerPlugin:(Plugin*)plugin withPluginName:(NSString*)pluginName
+//{
+//    if ([plugin respondsToSelector:@selector(setWindowController:)]) {
+//        [plugin setWindowController:self];
+//    }
+//    
+//    if ([plugin respondsToSelector:@selector(setCommandDelegate:)]) {
+//        [plugin setCommandDelegate:_commandDelegate];
+//    }
+//    
+//    NSString* className = NSStringFromClass([plugin class]);
+//    [self.pluginObjects setObject:plugin forKey:className];
+//    [self.pluginsMap setValue:className forKey:[pluginName lowercaseString]];
+//    [plugin pluginInitialize];
+//}
+//
+//- (id)getCommandInstance:(NSString*)pluginName
+//{
+// 
+//    NSString* className = [self.pluginsMap objectForKey:[pluginName lowercaseString]];
+//    if (className == nil) {
+//        className = [self.pluginsMap objectForKey:pluginName];
+//      
+//        if(className == nil)
+//            return nil;
+//    }
+//    
+//    id obj = [self.pluginObjects objectForKey:className];
+//    if (!obj) {
+//        obj = [[NSClassFromString(className)alloc] initWithWebView:webView];
+//        
+//        if (obj != nil) {
+//            [self registerPlugin:obj withClassName:className];
+//        } else {
+//            NSLog(@"Plugin class %@ (pluginName: %@) does not exist.", className, pluginName);
+//        }
+//    }
+//    return obj;
+//}
 
 
 

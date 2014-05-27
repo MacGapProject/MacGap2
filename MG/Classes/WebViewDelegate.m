@@ -5,9 +5,13 @@
 //  Created by Tim Debo on 5/20/14.
 //
 //
+#import <JavaScriptCore/JavaScriptCore.h>
 
 #import "WebViewDelegate.h"
 #import "WindowController.h"
+#import "Dock.h"
+#import "Menu.h"
+#import "Dialog.h"
 
 @implementation WebViewDelegate
 
@@ -28,12 +32,12 @@
 {
 //    JSContextRef context = [frame globalContext];
     
-    if (self.window == nil) {
-     
-        self.window = [windowController.commandDelegate getCommandInstance:@"Window"];
-    }
-    
-    [windowScriptObject setValue:self forKey:kWebScriptNamespace];
+//    if (self.window == nil) {
+//     
+//        self.window = [windowController.commandDelegate getCommandInstance:@"Window"];
+//    }
+//    
+//    [windowScriptObject setValue:self forKey:kWebScriptNamespace];
 }
 
 - (void)webView:(WebView *)sender runOpenPanelForFileButtonWithResultListener:(id < WebOpenPanelResultListener >)resultListener allowMultipleFiles:(BOOL)allowMultipleFiles{
@@ -162,15 +166,39 @@
     
     if (![[webView stringByEvaluatingJavaScriptFromString:@"typeof macgap == 'object'"] isEqualToString:@"true"]) {
         NSBundle *bundle = [NSBundle mainBundle];
-        NSString *filePath = [bundle pathForResource:@"macgap" ofType:@"js"];
-        NSString *js = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
-        [webView stringByEvaluatingJavaScriptFromString:js];
+     //   NSString *filePath = [bundle pathForResource:@"macgap" ofType:@"js"];
+    //    NSString *js = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
+      //  [webView stringByEvaluatingJavaScriptFromString:js];
     }
     
   //  [bridge dispatchStartupQueue];
     
 }
 
+- (void) webView: (WebView*) webView didCreateJavaScriptContext:(JSContext *)context forFrame:(WebFrame *)frame
+{
+    windowController.jsContext = context;
+ 
+    if(window == nil) {
+        window = [[Window alloc] initWithWindowController:self.windowController andWebview:webView];
+    }
+    if(dock == nil) {
+        dock = [[Dock alloc] init];
+    }
+    if(menu == nil) {
+        menu = [[Menu alloc] initWithMenu:mainMenu forContext:context];
+    }
+    if(dialog == nil) {
+        dialog = [[Dialog alloc] init];
+    }
+                  
+    JSValue *macgap = [JSValue valueWithObject:@{@"window" : window,
+                                                 @"dock" : dock,
+                                                 @"dialog" : dialog,
+                                                 @"menu" : menu}
+                                     inContext:context];
+    context[@"macgap"] = macgap;
+}
 
 - (void)webView:(WebView *)webView decidePolicyForNavigationAction:(NSDictionary *)actionInformation request:(NSURLRequest *)request frame:(WebFrame *)frame decisionListener:(id<WebPolicyDecisionListener>)listener
 {
@@ -178,7 +206,7 @@
     NSURL *url = [request URL];
    
     if ([[url scheme] isEqualToString:kCustomProtocolScheme]) {
-        [windowController.commandQueue fetchCommandsFromJs];
+   //     [windowController.commandQueue fetchCommandsFromJs];
         [listener ignore];
     }  else {
         [listener use];

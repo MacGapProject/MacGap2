@@ -21,20 +21,6 @@
 		2237E680192B018D001E1393 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2237E67F192B018D001E1393 /* JavaScriptCore.framework */; };
 		2237E68C192B09C5001E1393 /* WindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2237E68A192B09C5001E1393 /* WindowController.m */; };
 		2237E69D192B0ED9001E1393 /* WebViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2237E69C192B0ED9001E1393 /* WebViewDelegate.m */; };
-		2237E6A0192B0F46001E1393 /* CommandDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2237E69F192B0F46001E1393 /* CommandDelegate.m */; };
-		2237E6D1192B8FA4001E1393 /* CommandQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 2237E6BF192B8FA4001E1393 /* CommandQueue.m */; };
-		2237E6D2192B8FA4001E1393 /* macgap.js in Sources */ = {isa = PBXBuildFile; fileRef = 2237E6C1192B8FA4001E1393 /* macgap.js */; };
-		2237E6D3192B8FA4001E1393 /* bridge.js in Sources */ = {isa = PBXBuildFile; fileRef = 2237E6C3192B8FA4001E1393 /* bridge.js */; };
-		2237E6D4192B8FA4001E1393 /* exec.js in Sources */ = {isa = PBXBuildFile; fileRef = 2237E6C4192B8FA4001E1393 /* exec.js */; };
-		2237E6D5192B8FA4001E1393 /* init.js in Sources */ = {isa = PBXBuildFile; fileRef = 2237E6C5192B8FA4001E1393 /* init.js */; };
-		2237E6D6192B8FA4001E1393 /* macgap.js in Sources */ = {isa = PBXBuildFile; fileRef = 2237E6C6192B8FA4001E1393 /* macgap.js */; };
-		2237E6D7192B8FA4001E1393 /* menu.js in Sources */ = {isa = PBXBuildFile; fileRef = 2237E6C7192B8FA4001E1393 /* menu.js */; };
-		2237E6D8192B8FA4001E1393 /* menuitem.js in Sources */ = {isa = PBXBuildFile; fileRef = 2237E6C8192B8FA4001E1393 /* menuitem.js */; };
-		2237E6D9192B8FA4001E1393 /* require.js in Sources */ = {isa = PBXBuildFile; fileRef = 2237E6C9192B8FA4001E1393 /* require.js */; };
-		2237E6DA192B8FA4001E1393 /* utils.js in Sources */ = {isa = PBXBuildFile; fileRef = 2237E6CA192B8FA4001E1393 /* utils.js */; };
-		2237E6DB192B8FA4001E1393 /* JSCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 2237E6CC192B8FA4001E1393 /* JSCommand.m */; };
-		2237E6DC192B8FA4001E1393 /* Plugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 2237E6CE192B8FA4001E1393 /* Plugin.m */; };
-		2237E6DD192B8FA4001E1393 /* PluginResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 2237E6D0192B8FA4001E1393 /* PluginResult.m */; };
 		2237E6E6192B90EE001E1393 /* JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 2237E6E3192B90EE001E1393 /* JSON.m */; };
 		2237E6E7192B90EE001E1393 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 2237E6E5192B90EE001E1393 /* NSData+Base64.m */; };
 		2237E6EF192BAF85001E1393 /* public in Resources */ = {isa = PBXBuildFile; fileRef = 2237E6EE192BAF85001E1393 /* public */; };
@@ -42,8 +28,11 @@
 		2237E6F7192BB09C001E1393 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2237E6F1192BB032001E1393 /* MainWindow.xib */; };
 		2237E6FC192C17AA001E1393 /* Menu.m in Sources */ = {isa = PBXBuildFile; fileRef = 2237E6FB192C17AA001E1393 /* Menu.m */; };
 		2237E6FF192C17CF001E1393 /* Window.m in Sources */ = {isa = PBXBuildFile; fileRef = 2237E6FE192C17CF001E1393 /* Window.m */; };
-		2237E701192C1985001E1393 /* window.js in Sources */ = {isa = PBXBuildFile; fileRef = 2237E700192C1985001E1393 /* window.js */; };
-		22ABE342192C273200497794 /* macgap.js in Resources */ = {isa = PBXBuildFile; fileRef = 2237E6C1192B8FA4001E1393 /* macgap.js */; };
+		22B1CEDD1934F27F00D2C294 /* Dialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B1CEDC1934F27F00D2C294 /* Dialog.m */; };
+		22DC8861192EE8DF00A909A3 /* Dock.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DC8860192EE8DF00A909A3 /* Dock.m */; };
+		22DC8864192FBE6400A909A3 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DC8863192FBE6400A909A3 /* Event.m */; };
+		22DC8867192FD2BA00A909A3 /* MenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DC8866192FD2BA00A909A3 /* MenuItem.m */; };
+		22DC886A192FF10B00A909A3 /* Command.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DC8869192FF10B00A909A3 /* Command.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,26 +71,7 @@
 		2237E68A192B09C5001E1393 /* WindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WindowController.m; path = Classes/WindowController.m; sourceTree = "<group>"; };
 		2237E69B192B0ED9001E1393 /* WebViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WebViewDelegate.h; path = Classes/WebViewDelegate.h; sourceTree = "<group>"; };
 		2237E69C192B0ED9001E1393 /* WebViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WebViewDelegate.m; path = Classes/WebViewDelegate.m; sourceTree = "<group>"; };
-		2237E69E192B0F46001E1393 /* CommandDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommandDelegate.h; path = Classes/CommandDelegate.h; sourceTree = "<group>"; };
-		2237E69F192B0F46001E1393 /* CommandDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommandDelegate.m; path = Classes/CommandDelegate.m; sourceTree = "<group>"; };
 		2237E6B9192B8E2A001E1393 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
-		2237E6BE192B8FA4001E1393 /* CommandQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommandQueue.h; sourceTree = "<group>"; };
-		2237E6BF192B8FA4001E1393 /* CommandQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommandQueue.m; sourceTree = "<group>"; };
-		2237E6C1192B8FA4001E1393 /* macgap.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = macgap.js; sourceTree = "<group>"; };
-		2237E6C3192B8FA4001E1393 /* bridge.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = bridge.js; sourceTree = "<group>"; };
-		2237E6C4192B8FA4001E1393 /* exec.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = exec.js; sourceTree = "<group>"; };
-		2237E6C5192B8FA4001E1393 /* init.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = init.js; sourceTree = "<group>"; };
-		2237E6C6192B8FA4001E1393 /* macgap.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = macgap.js; sourceTree = "<group>"; };
-		2237E6C7192B8FA4001E1393 /* menu.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = menu.js; sourceTree = "<group>"; };
-		2237E6C8192B8FA4001E1393 /* menuitem.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = menuitem.js; sourceTree = "<group>"; };
-		2237E6C9192B8FA4001E1393 /* require.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = require.js; sourceTree = "<group>"; };
-		2237E6CA192B8FA4001E1393 /* utils.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = utils.js; sourceTree = "<group>"; };
-		2237E6CB192B8FA4001E1393 /* JSCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSCommand.h; sourceTree = "<group>"; };
-		2237E6CC192B8FA4001E1393 /* JSCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSCommand.m; sourceTree = "<group>"; };
-		2237E6CD192B8FA4001E1393 /* Plugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Plugin.h; sourceTree = "<group>"; };
-		2237E6CE192B8FA4001E1393 /* Plugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Plugin.m; sourceTree = "<group>"; };
-		2237E6CF192B8FA4001E1393 /* PluginResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PluginResult.h; sourceTree = "<group>"; };
-		2237E6D0192B8FA4001E1393 /* PluginResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PluginResult.m; sourceTree = "<group>"; };
 		2237E6E2192B90EE001E1393 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
 		2237E6E3192B90EE001E1393 /* JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSON.m; sourceTree = "<group>"; };
 		2237E6E4192B90EE001E1393 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
@@ -112,8 +82,17 @@
 		2237E6FB192C17AA001E1393 /* Menu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Menu.m; sourceTree = "<group>"; };
 		2237E6FD192C17CF001E1393 /* Window.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Window.h; sourceTree = "<group>"; };
 		2237E6FE192C17CF001E1393 /* Window.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Window.m; sourceTree = "<group>"; };
-		2237E700192C1985001E1393 /* window.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = window.js; sourceTree = "<group>"; };
 		22ABE343192C5E3500497794 /* MacGap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MacGap.h; path = Classes/Commands/MacGap.h; sourceTree = "<group>"; };
+		22B1CEDB1934F27F00D2C294 /* Dialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dialog.h; sourceTree = "<group>"; };
+		22B1CEDC1934F27F00D2C294 /* Dialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dialog.m; sourceTree = "<group>"; };
+		22DC885F192EE8DF00A909A3 /* Dock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dock.h; sourceTree = "<group>"; };
+		22DC8860192EE8DF00A909A3 /* Dock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dock.m; sourceTree = "<group>"; };
+		22DC8862192FBE6400A909A3 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
+		22DC8863192FBE6400A909A3 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
+		22DC8865192FD2BA00A909A3 /* MenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuItem.h; sourceTree = "<group>"; };
+		22DC8866192FD2BA00A909A3 /* MenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuItem.m; sourceTree = "<group>"; };
+		22DC8868192FF10B00A909A3 /* Command.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Command.h; sourceTree = "<group>"; };
+		22DC8869192FF10B00A909A3 /* Command.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Command.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -234,8 +213,6 @@
 				2237E68A192B09C5001E1393 /* WindowController.m */,
 				2237E69B192B0ED9001E1393 /* WebViewDelegate.h */,
 				2237E69C192B0ED9001E1393 /* WebViewDelegate.m */,
-				2237E69E192B0F46001E1393 /* CommandDelegate.h */,
-				2237E69F192B0F46001E1393 /* CommandDelegate.m */,
 				2237E6B9192B8E2A001E1393 /* Constants.h */,
 			);
 			name = Classes;
@@ -253,47 +230,23 @@
 		2237E6BD192B8FA4001E1393 /* Commands */ = {
 			isa = PBXGroup;
 			children = (
-				2237E6BE192B8FA4001E1393 /* CommandQueue.h */,
-				2237E6BF192B8FA4001E1393 /* CommandQueue.m */,
-				2237E6C0192B8FA4001E1393 /* js */,
-				2237E6CB192B8FA4001E1393 /* JSCommand.h */,
-				2237E6CC192B8FA4001E1393 /* JSCommand.m */,
-				2237E6CD192B8FA4001E1393 /* Plugin.h */,
-				2237E6CE192B8FA4001E1393 /* Plugin.m */,
-				2237E6CF192B8FA4001E1393 /* PluginResult.h */,
-				2237E6D0192B8FA4001E1393 /* PluginResult.m */,
+				22DC8868192FF10B00A909A3 /* Command.h */,
+				22DC8869192FF10B00A909A3 /* Command.m */,
 				2237E6FA192C17AA001E1393 /* Menu.h */,
 				2237E6FB192C17AA001E1393 /* Menu.m */,
+				22DC8865192FD2BA00A909A3 /* MenuItem.h */,
+				22DC8866192FD2BA00A909A3 /* MenuItem.m */,
 				2237E6FD192C17CF001E1393 /* Window.h */,
 				2237E6FE192C17CF001E1393 /* Window.m */,
+				22DC885F192EE8DF00A909A3 /* Dock.h */,
+				22DC8860192EE8DF00A909A3 /* Dock.m */,
+				22DC8862192FBE6400A909A3 /* Event.h */,
+				22DC8863192FBE6400A909A3 /* Event.m */,
+				22B1CEDB1934F27F00D2C294 /* Dialog.h */,
+				22B1CEDC1934F27F00D2C294 /* Dialog.m */,
 			);
 			name = Commands;
 			path = Classes/Commands;
-			sourceTree = "<group>";
-		};
-		2237E6C0192B8FA4001E1393 /* js */ = {
-			isa = PBXGroup;
-			children = (
-				2237E6C1192B8FA4001E1393 /* macgap.js */,
-				2237E6C2192B8FA4001E1393 /* src */,
-			);
-			path = js;
-			sourceTree = "<group>";
-		};
-		2237E6C2192B8FA4001E1393 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				2237E6C3192B8FA4001E1393 /* bridge.js */,
-				2237E6C4192B8FA4001E1393 /* exec.js */,
-				2237E6C5192B8FA4001E1393 /* init.js */,
-				2237E6C6192B8FA4001E1393 /* macgap.js */,
-				2237E6C7192B8FA4001E1393 /* menu.js */,
-				2237E6C8192B8FA4001E1393 /* menuitem.js */,
-				2237E6C9192B8FA4001E1393 /* require.js */,
-				2237E6CA192B8FA4001E1393 /* utils.js */,
-				2237E700192C1985001E1393 /* window.js */,
-			);
-			path = src;
 			sourceTree = "<group>";
 		};
 		2237E6E1192B90EE001E1393 /* Categories */ = {
@@ -382,7 +335,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				22ABE342192C273200497794 /* macgap.js in Resources */,
 				2237E6EF192BAF85001E1393 /* public in Resources */,
 				2237E654192B0177001E1393 /* InfoPlist.strings in Resources */,
 				2237E662192B0177001E1393 /* Images.xcassets in Resources */,
@@ -407,28 +359,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2237E6DC192B8FA4001E1393 /* Plugin.m in Sources */,
 				2237E65D192B0177001E1393 /* AppDelegate.m in Sources */,
 				2237E6E6192B90EE001E1393 /* JSON.m in Sources */,
 				2237E69D192B0ED9001E1393 /* WebViewDelegate.m in Sources */,
-				2237E6D3192B8FA4001E1393 /* bridge.js in Sources */,
-				2237E6D5192B8FA4001E1393 /* init.js in Sources */,
-				2237E6DA192B8FA4001E1393 /* utils.js in Sources */,
+				22DC8867192FD2BA00A909A3 /* MenuItem.m in Sources */,
+				22DC8864192FBE6400A909A3 /* Event.m in Sources */,
 				2237E6FF192C17CF001E1393 /* Window.m in Sources */,
-				2237E6D9192B8FA4001E1393 /* require.js in Sources */,
 				2237E6FC192C17AA001E1393 /* Menu.m in Sources */,
 				2237E68C192B09C5001E1393 /* WindowController.m in Sources */,
-				2237E6A0192B0F46001E1393 /* CommandDelegate.m in Sources */,
-				2237E6DD192B8FA4001E1393 /* PluginResult.m in Sources */,
-				2237E6D2192B8FA4001E1393 /* macgap.js in Sources */,
-				2237E6DB192B8FA4001E1393 /* JSCommand.m in Sources */,
-				2237E6D8192B8FA4001E1393 /* menuitem.js in Sources */,
-				2237E6D4192B8FA4001E1393 /* exec.js in Sources */,
-				2237E6D7192B8FA4001E1393 /* menu.js in Sources */,
-				2237E6D6192B8FA4001E1393 /* macgap.js in Sources */,
+				22DC886A192FF10B00A909A3 /* Command.m in Sources */,
+				22B1CEDD1934F27F00D2C294 /* Dialog.m in Sources */,
+				22DC8861192EE8DF00A909A3 /* Dock.m in Sources */,
 				2237E6E7192B90EE001E1393 /* NSData+Base64.m in Sources */,
-				2237E701192C1985001E1393 /* window.js in Sources */,
-				2237E6D1192B8FA4001E1393 /* CommandQueue.m in Sources */,
 				2237E656192B0177001E1393 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -528,7 +470,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 			};
@@ -561,7 +503,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				SDKROOT = macosx;
 			};
 			name = Release;
