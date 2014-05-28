@@ -7,9 +7,11 @@
 //
 
 #import "Command.h"
+#import "WindowController.h"
+#import <WebKit/WebKit.h>
 
 @implementation Command
-
+@synthesize webView, windowController;
 + (JSValue *)makeConstructor:(id)block inContext:(JSContext *)context {
     JSValue *fun = [context evaluateScript:@"(function () { return this.__construct.apply(this, arguments); });"];
     fun[@"prototype"][@"__construct"] = block;
@@ -19,5 +21,11 @@
 + (JSValue *)constructor {
     return [self makeConstructor:^{ return [self new]; } inContext:JSContext.currentContext];
 }
+
++ (NSString*) exportName {
+    return NSStringFromClass([self class]);
+}
+
+- (void) initializePlugin {}
 
 @end

@@ -29,6 +29,10 @@
 		2237E6FC192C17AA001E1393 /* Menu.m in Sources */ = {isa = PBXBuildFile; fileRef = 2237E6FB192C17AA001E1393 /* Menu.m */; };
 		2237E6FF192C17CF001E1393 /* Window.m in Sources */ = {isa = PBXBuildFile; fileRef = 2237E6FE192C17CF001E1393 /* Window.m */; };
 		22B1CEDD1934F27F00D2C294 /* Dialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B1CEDC1934F27F00D2C294 /* Dialog.m */; };
+		22B1CEE0193539A300D2C294 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B1CEDF193539A300D2C294 /* Task.m */; };
+		22B1CEE319353D0800D2C294 /* Notify.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B1CEE219353D0800D2C294 /* Notify.m */; };
+		22B1CEE619353EBB00D2C294 /* App.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B1CEE519353EBB00D2C294 /* App.m */; };
+		22B1CEE919355BD800D2C294 /* Fonts.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B1CEE819355BD800D2C294 /* Fonts.m */; };
 		22DC8861192EE8DF00A909A3 /* Dock.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DC8860192EE8DF00A909A3 /* Dock.m */; };
 		22DC8864192FBE6400A909A3 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DC8863192FBE6400A909A3 /* Event.m */; };
 		22DC8867192FD2BA00A909A3 /* MenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DC8866192FD2BA00A909A3 /* MenuItem.m */; };
@@ -82,9 +86,17 @@
 		2237E6FB192C17AA001E1393 /* Menu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Menu.m; sourceTree = "<group>"; };
 		2237E6FD192C17CF001E1393 /* Window.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Window.h; sourceTree = "<group>"; };
 		2237E6FE192C17CF001E1393 /* Window.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Window.m; sourceTree = "<group>"; };
-		22ABE343192C5E3500497794 /* MacGap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MacGap.h; path = Classes/Commands/MacGap.h; sourceTree = "<group>"; };
+		22ABE343192C5E3500497794 /* MacGap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MacGap.h; sourceTree = "<group>"; };
 		22B1CEDB1934F27F00D2C294 /* Dialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dialog.h; sourceTree = "<group>"; };
 		22B1CEDC1934F27F00D2C294 /* Dialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dialog.m; sourceTree = "<group>"; };
+		22B1CEDE193539A300D2C294 /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
+		22B1CEDF193539A300D2C294 /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
+		22B1CEE119353D0800D2C294 /* Notify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Notify.h; sourceTree = "<group>"; };
+		22B1CEE219353D0800D2C294 /* Notify.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Notify.m; sourceTree = "<group>"; };
+		22B1CEE419353EBB00D2C294 /* App.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = App.h; sourceTree = "<group>"; };
+		22B1CEE519353EBB00D2C294 /* App.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = App.m; sourceTree = "<group>"; };
+		22B1CEE719355BD800D2C294 /* Fonts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fonts.h; sourceTree = "<group>"; };
+		22B1CEE819355BD800D2C294 /* Fonts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Fonts.m; sourceTree = "<group>"; };
 		22DC885F192EE8DF00A909A3 /* Dock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dock.h; sourceTree = "<group>"; };
 		22DC8860192EE8DF00A909A3 /* Dock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dock.m; sourceTree = "<group>"; };
 		22DC8862192FBE6400A909A3 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
@@ -209,7 +221,6 @@
 			children = (
 				2237E6BD192B8FA4001E1393 /* Commands */,
 				2237E689192B09C5001E1393 /* WindowController.h */,
-				22ABE343192C5E3500497794 /* MacGap.h */,
 				2237E68A192B09C5001E1393 /* WindowController.m */,
 				2237E69B192B0ED9001E1393 /* WebViewDelegate.h */,
 				2237E69C192B0ED9001E1393 /* WebViewDelegate.m */,
@@ -230,9 +241,14 @@
 		2237E6BD192B8FA4001E1393 /* Commands */ = {
 			isa = PBXGroup;
 			children = (
+				22ABE343192C5E3500497794 /* MacGap.h */,
 				22DC8868192FF10B00A909A3 /* Command.h */,
 				22DC8869192FF10B00A909A3 /* Command.m */,
 				2237E6FA192C17AA001E1393 /* Menu.h */,
+				22B1CEE119353D0800D2C294 /* Notify.h */,
+				22B1CEE719355BD800D2C294 /* Fonts.h */,
+				22B1CEE819355BD800D2C294 /* Fonts.m */,
+				22B1CEE219353D0800D2C294 /* Notify.m */,
 				2237E6FB192C17AA001E1393 /* Menu.m */,
 				22DC8865192FD2BA00A909A3 /* MenuItem.h */,
 				22DC8866192FD2BA00A909A3 /* MenuItem.m */,
@@ -244,6 +260,10 @@
 				22DC8863192FBE6400A909A3 /* Event.m */,
 				22B1CEDB1934F27F00D2C294 /* Dialog.h */,
 				22B1CEDC1934F27F00D2C294 /* Dialog.m */,
+				22B1CEDE193539A300D2C294 /* Task.h */,
+				22B1CEDF193539A300D2C294 /* Task.m */,
+				22B1CEE419353EBB00D2C294 /* App.h */,
+				22B1CEE519353EBB00D2C294 /* App.m */,
 			);
 			name = Commands;
 			path = Classes/Commands;
@@ -359,6 +379,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22B1CEE0193539A300D2C294 /* Task.m in Sources */,
+				22B1CEE619353EBB00D2C294 /* App.m in Sources */,
+				22B1CEE319353D0800D2C294 /* Notify.m in Sources */,
 				2237E65D192B0177001E1393 /* AppDelegate.m in Sources */,
 				2237E6E6192B90EE001E1393 /* JSON.m in Sources */,
 				2237E69D192B0ED9001E1393 /* WebViewDelegate.m in Sources */,
@@ -370,6 +393,7 @@
 				22DC886A192FF10B00A909A3 /* Command.m in Sources */,
 				22B1CEDD1934F27F00D2C294 /* Dialog.m in Sources */,
 				22DC8861192EE8DF00A909A3 /* Dock.m in Sources */,
+				22B1CEE919355BD800D2C294 /* Fonts.m in Sources */,
 				2237E6E7192B90EE001E1393 /* NSData+Base64.m in Sources */,
 				2237E656192B0177001E1393 /* main.m in Sources */,
 			);

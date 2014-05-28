@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <WebKit/WebKit.h>
 
-@class WindowController, Window, Dock, Menu, Dialog;
+@class WindowController, Window, Dock, Menu, Dialog, App;
 
 @interface WebViewDelegate : NSObject {
     NSMenu *mainMenu;
@@ -17,6 +17,7 @@
     Dock* dock;
     Menu* menu;
     Dialog* dialog;
+    App* app;
 }
 
 @property (nonatomic, retain) WindowController *windowController;
@@ -24,6 +25,7 @@
 @property (nonatomic, retain) Dock* dock;
 @property (nonatomic, retain) Menu* menu;
 @property (nonatomic, retain) Dialog* dialog;
+@property (nonatomic, retain) App* app;
 - (id) initWithMenu:(NSMenu*)menu;
 
 @end

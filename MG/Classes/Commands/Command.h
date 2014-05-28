@@ -8,8 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import <JavaScriptCore/JavaScriptCore.h>
+@class WindowController, WebView;
 
 @interface Command : NSObject
 + (JSValue *)makeConstructor:(id)block inContext:(JSContext *)context;
 + (JSValue *)constructor;
++ (NSString*) exportName;
+- (void) initializePlugin;
+@property (nonatomic, weak) WebView* webView;
+@property (nonatomic, weak) WindowController* windowController;
 @end

@@ -12,6 +12,7 @@
 #import "Dock.h"
 #import "Menu.h"
 #import "Dialog.h"
+#import "App.h"
 
 @implementation WebViewDelegate
 
@@ -28,17 +29,6 @@
     return self;
 }
 
-- (void) webView:(WebView*)webView didClearWindowObject:(WebScriptObject*)windowScriptObject forFrame:(WebFrame *)frame
-{
-//    JSContextRef context = [frame globalContext];
-    
-//    if (self.window == nil) {
-//     
-//        self.window = [windowController.commandDelegate getCommandInstance:@"Window"];
-//    }
-//    
-//    [windowScriptObject setValue:self forKey:kWebScriptNamespace];
-}
 
 - (void)webView:(WebView *)sender runOpenPanelForFileButtonWithResultListener:(id < WebOpenPanelResultListener >)resultListener allowMultipleFiles:(BOOL)allowMultipleFiles{
     
@@ -161,24 +151,16 @@
     [listener ignore];
 }
 
-- (void)webView:(WebView *)webView didFinishLoadForFrame:(WebFrame *)frame
-{
-    
-    if (![[webView stringByEvaluatingJavaScriptFromString:@"typeof macgap == 'object'"] isEqualToString:@"true"]) {
-        NSBundle *bundle = [NSBundle mainBundle];
-     //   NSString *filePath = [bundle pathForResource:@"macgap" ofType:@"js"];
-    //    NSString *js = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
-      //  [webView stringByEvaluatingJavaScriptFromString:js];
-    }
-    
-  //  [bridge dispatchStartupQueue];
-    
-}
 
 - (void) webView: (WebView*) webView didCreateJavaScriptContext:(JSContext *)context forFrame:(WebFrame *)frame
 {
     windowController.jsContext = context;
  
+
+    if (app == nil) {
+        app = [[App alloc] initWithWebView:webView];
+    }
+    
     if(window == nil) {
         window = [[Window alloc] initWithWindowController:self.windowController andWebview:webView];
     }
@@ -191,38 +173,18 @@
     if(dialog == nil) {
         dialog = [[Dialog alloc] init];
     }
-                  
-    JSValue *macgap = [JSValue valueWithObject:@{@"window" : window,
-                                                 @"dock" : dock,
-                                                 @"dialog" : dialog,
-                                                 @"menu" : menu}
-                                     inContext:context];
-    context[@"macgap"] = macgap;
-}
-
-- (void)webView:(WebView *)webView decidePolicyForNavigationAction:(NSDictionary *)actionInformation request:(NSURLRequest *)request frame:(WebFrame *)frame decisionListener:(id<WebPolicyDecisionListener>)listener
-{
     
-    NSURL *url = [request URL];
-   
-    if ([[url scheme] isEqualToString:kCustomProtocolScheme]) {
-   //     [windowController.commandQueue fetchCommandsFromJs];
-        [listener ignore];
-    }  else {
-        [listener use];
-    }
-}
-
-#pragma mark WebScripting protocol
-
-+ (BOOL) isSelectorExcludedFromWebScript:(SEL)selector
-{
-	return YES;
-}
-
-+ (BOOL) isKeyExcludedFromWebScript:(const char*)name
-{
-	return NO;
+//    JSValue *macgap = [JSValue valueWithObject:@{@"window" : window,
+//                                                 @"dock" : dock,
+//                                                 @"dialog" : dialog,
+//                                                 @"menu" : menu}
+//                                     inContext:context];
+    context[@"macgap"] = app;
+    context[@"macgap"][@"window"] = window;
+    context[@"macgap"][@"dock"] = dock;
+    context[@"macgap"][@"dialog"] = dialog;
+    context[@"macgap"][@"menu"] = menu;
+    
 }
 
 
