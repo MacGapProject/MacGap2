@@ -22,8 +22,20 @@
     return [self makeConstructor:^{ return [self new]; } inContext:JSContext.currentContext];
 }
 
-+ (NSString*) exportName {
+- (NSString*) exportName {
     return NSStringFromClass([self class]);
+}
+
+- (id) initWithWindowController:(WindowController *)aWindowController
+{
+    self = [super init];
+    if(self) {
+        self.windowController = aWindowController;
+        self.webView = aWindowController.webView;
+    }
+    
+    return self;
+
 }
 
 - (void) initializePlugin {}

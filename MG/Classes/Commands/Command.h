@@ -13,8 +13,9 @@
 @interface Command : NSObject
 + (JSValue *)makeConstructor:(id)block inContext:(JSContext *)context;
 + (JSValue *)constructor;
-+ (NSString*) exportName;
+- (NSString*) exportName;
 - (void) initializePlugin;
+- (id) initWithWindowController: (WindowController*)aWindowController;
 @property (nonatomic, weak) WebView* webView;
 @property (nonatomic, weak) WindowController* windowController;
 @end

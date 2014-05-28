@@ -4,8 +4,9 @@
     "description": "",
     "version": "2.0.0",
     "plugins" : {
-                "Window":"Window",
-                 "Menu":"Menu"
+                "Dock":"Dock",
+                "Dialog":"Dialog",
+                "Fonts" : "Fonts"
                  },
     "window" : {
         "title" : "MacGap",

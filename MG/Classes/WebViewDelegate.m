@@ -13,6 +13,7 @@
 #import "Menu.h"
 #import "Dialog.h"
 #import "App.h"
+#import "Fonts.h"
 
 @implementation WebViewDelegate
 
@@ -156,7 +157,7 @@
 {
     windowController.jsContext = context;
  
-
+    //Initialize "Always On" commands
     if (app == nil) {
         app = [[App alloc] initWithWebView:webView];
     }
@@ -164,27 +165,22 @@
     if(window == nil) {
         window = [[Window alloc] initWithWindowController:self.windowController andWebview:webView];
     }
-    if(dock == nil) {
-        dock = [[Dock alloc] init];
-    }
+    
     if(menu == nil) {
         menu = [[Menu alloc] initWithMenu:mainMenu forContext:context];
     }
-    if(dialog == nil) {
-        dialog = [[Dialog alloc] init];
-    }
     
-//    JSValue *macgap = [JSValue valueWithObject:@{@"window" : window,
-//                                                 @"dock" : dock,
-//                                                 @"dialog" : dialog,
-//                                                 @"menu" : menu}
-//                                     inContext:context];
     context[@"macgap"] = app;
-    context[@"macgap"][@"window"] = window;
-    context[@"macgap"][@"dock"] = dock;
-    context[@"macgap"][@"dialog"] = dialog;
-    context[@"macgap"][@"menu"] = menu;
+    context[@"macgap"][@"Window"] = window;
+    context[@"macgap"][@"Menu"] = menu;
     
+    //Init user selected plugins
+    for( NSString* plugin in windowController.pluginsMap) {
+       
+        id obj = [[NSClassFromString(plugin)alloc] initWithWindowController: windowController];
+        NSString *exportName = [obj exportName];
+        context[@"macgap"][exportName] = obj;
+    }
 }
 
 
