@@ -7,6 +7,21 @@
 ## API Usage
 
 
+### Menus
+	//add main menu item to a menu - everything but label is optional
+	var myMenu = macgap.Menu.addItem({label: 'My Label', index: 1 });
+
+	//add item to newly created menu
+	myMenu.addItem({label: 'My Label', keys: 'cmd+t', callback: function() { ... } });
+
+	//add submenu to myMenu
+	var sub = myMenu.addSubmenu('My Title');
+    //add items
+    sub.addItem({ ... });
+
+    
+more to follow
+	
 
 ### StatusBar
 
