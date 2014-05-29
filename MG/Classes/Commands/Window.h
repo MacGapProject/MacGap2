@@ -15,9 +15,10 @@
 @property (readonly) CGFloat x;
 @property (readonly) CGFloat y;
 
-- (void) move: (NSNumber*) xCoord y: (NSNumber*) yCoord;
-- (void) open: (NSDictionary*) props;
-- (void) resize: (NSNumber*) width height: (NSNumber*) height;
+
+//- (void) open: (NSDictionary*) props;
+JSExportAs(move, - (void) move: (NSNumber*) xCoord y: (NSNumber*) yCoord);
+JSExportAs(resize, - (void) resize: (NSNumber*) width height: (NSNumber*) height);
 - (void) minimize;
 - (void) maximize;
 - (void) toggleFullscreen;

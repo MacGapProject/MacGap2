@@ -12,6 +12,9 @@
 #import "Event.h"
 
 @interface Window ()
+{
+    CGRect _oldRestoreFrame;
+}
     @property (nonatomic, retain) WindowController *windowController;
     @property (nonatomic, retain) WebView *webView;
     @property (readwrite) BOOL isMaximized;
@@ -55,12 +58,50 @@
     NSRect frame = [self.webView window].frame;
     return frame.origin.y;
 }
+//
+//- (void) open:(NSDictionary *)properties
+//{
+//    self.windowController = [[WindowController alloc] initWithURL:[properties valueForKey:@"url"]];
+//    [self.windowController showWindow: [NSApplication sharedApplication].delegate];
+//    [self.windowController.window makeKeyWindow];
+//}
 
 - (void) title: (NSString*) title
 {
    [self.windowController.window setTitle:title];
 }
 
+
+- (void) minimize {
+    [self.windowController.window miniaturize:[NSApp mainWindow]];
+}
+
+- (void) toggleFullscreen {
+    [self.windowController.window toggleFullScreen:[NSApp mainWindow]];
+}
+
+- (void) maximize {
+    CGRect a = [NSApp mainWindow].frame;
+    _oldRestoreFrame = CGRectMake(a.origin.x, a.origin.y, a.size.width, a.size.height);
+    [self.windowController.window setFrame:[[NSScreen mainScreen] visibleFrame] display:YES];
+}
+
+- (void) move: (NSNumber*) xCoord y: (NSNumber*) yCoord
+{
+    NSRect frame = [self.webView window].frame;
+    frame.origin.x = [xCoord integerValue];
+    frame.origin.y = [yCoord integerValue];
+    [self.windowController.window setFrame:frame display:YES];
+    
+}
+
+- (void) resize: (NSNumber*) width height: (NSNumber*) height
+{
+    NSRect frame = [self.webView window].frame;
+    frame.size.width = [width integerValue];
+    frame.size.height = [height integerValue];
+    [self.windowController.window setFrame:frame display:YES];
+}
 
 - (void) registerEvents
 {
