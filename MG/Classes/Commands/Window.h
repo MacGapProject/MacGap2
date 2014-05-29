@@ -23,7 +23,7 @@ JSExportAs(resize, - (void) resize: (NSNumber*) width height: (NSNumber*) height
 - (void) maximize;
 - (void) toggleFullscreen;
 - (void) title: (NSString*) title;
-
+- (void) restore;
 @end
 
 @interface Window : NSObject <WindowExports>

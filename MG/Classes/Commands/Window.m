@@ -13,7 +13,7 @@
 
 @interface Window ()
 {
-    CGRect _oldRestoreFrame;
+    NSRect _oldRestoreFrame;
 }
     @property (nonatomic, retain) WindowController *windowController;
     @property (nonatomic, retain) WebView *webView;
@@ -81,8 +81,9 @@
 }
 
 - (void) maximize {
-    CGRect a = [NSApp mainWindow].frame;
-    _oldRestoreFrame = CGRectMake(a.origin.x, a.origin.y, a.size.width, a.size.height);
+    NSRect a = self.windowController.window.frame;
+    _oldRestoreFrame = NSMakeRect(a.origin.x, a.origin.y, a.size.width, a.size.height);
+   
     [self.windowController.window setFrame:[[NSScreen mainScreen] visibleFrame] display:YES];
 }
 
@@ -103,6 +104,10 @@
     [self.windowController.window setFrame:frame display:YES];
 }
 
+- (void) restore
+{
+    [self.windowController.window setFrame:_oldRestoreFrame display:YES];
+}
 - (void) registerEvents
 {
     [[NSNotificationCenter defaultCenter] addObserver:self
