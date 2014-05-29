@@ -9,9 +9,19 @@
 #import "Command.h"
 
 @protocol TaskExports <JSExport>
-- (void) launchTask: (NSDictionary*) arguments;
+
+JSExportAs(create, - (JSValue*) createTask: (NSString*) path withCallback: (JSValue*) aCallback);
+- (void) launch;
+- (void) terminate;
+
+@property (readonly) BOOL isRunning;
+@property (readwrite) BOOL waitUntilExit;
+@property (readwrite) NSArray* arguments;
+@property (readwrite) NSDictionary* environment;
+@property (strong) JSManagedValue* callback;
+
 @end
 
 @interface Task : Command <TaskExports>
-
+@property (strong) NSTask* task;
 @end

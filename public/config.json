@@ -9,7 +9,8 @@
                 "Fonts" : "Fonts",
                 "Notify" : "Notify",
             "Clipboard":"Clipboard",
-        "StatusItem":"StatusItem"
+        "StatusItem":"StatusItem",
+        "Task" : "Task"
                  },
     "window" : {
         "title" : "MacGap",
