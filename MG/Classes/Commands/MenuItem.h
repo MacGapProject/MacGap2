@@ -14,7 +14,7 @@
 //- (void) setCallback:(JSManagedValue*)aCallback;
 - (void) setKey:(NSString*)keyCommand;
 - (void) setLabel:(NSString*)label;
-- (JSValue*)addSubmenu;
+JSExportAs(addSubmenu, - (JSValue*)addSubmenu: (NSString*) aTitle);
 @property (readonly) JSValue* submenu;
 @property (strong) JSManagedValue* callback;
 @end

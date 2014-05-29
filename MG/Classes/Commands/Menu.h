@@ -15,7 +15,7 @@
 
 JSExportAs(create, - (JSValue*) create: (NSString*) title type: (NSString*) type);
 
-JSExportAs(addItem, - (JSValue*) addItemWithTitle:(NSString*)title keyEquivalent:(NSString*)aKey atIndex:(NSInteger)index callback:(JSValue*)aCallback);
+- (JSValue*) addItem: (NSDictionary*) props;
 
 JSExportAs(getItem, - (JSValue*) itemForKey:(id)key);
 
@@ -34,8 +34,7 @@ JSExportAs(getItem, - (JSValue*) itemForKey:(id)key);
 @property (readonly) NSArray* menuItems;
 @property (strong) JSContext* context;
 
-
-
 - (Menu*) initWithMenu: (NSMenu*) aMenu forContext: (JSContext*) context;
 - (Menu*) initWithMenu: (NSMenu*) aMenu andType: (NSString*) type forContext: (JSContext*) context;
+- (NSMenu*)removeItem:(id)key;
 @end

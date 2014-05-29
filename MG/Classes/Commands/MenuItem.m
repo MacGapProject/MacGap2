@@ -59,6 +59,22 @@
     [item setTarget:self];
 }
 
+- (JSValue*)addSubmenu: (NSString*) aTitle
+{
+    NSMenu *s = [item submenu];
+    if (!s)
+    {
+        NSString *title = nil;
+        if(!aTitle || [aTitle isKindOfClass:[NSNull class]]) {
+            title = @"";
+        }
+        s = [[NSMenu alloc] initWithTitle:title];
+        [item setSubmenu:s];
+        self.submenu = [JSValue valueWithObject: [[Menu alloc] initWithMenu:s forContext:self.context] inContext:self.context];
+    }
+    return self.submenu;
+}
+
 - (void) setLabel: (NSString*) aLabel
 {
     if(aLabel && ![aLabel isKindOfClass: [NSNull class]]) {
@@ -66,5 +82,11 @@
     }
     
 }
+- (void) remove
+{
+    NSMenu *menu = [item menu];
+    [menu removeItem:item];
+}
+
 
 @end

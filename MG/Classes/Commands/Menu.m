@@ -55,28 +55,33 @@
     return [JSValue valueWithObject:menu inContext:[JSContext currentContext]];
 }
 
-
-- (JSValue*) addItemWithTitle:(NSString*)title
-                keyEquivalent:(NSString*)aKey
-                      atIndex:(NSInteger)index
-                     callback:(JSValue*)aCallback
+- (JSValue*) addItem:(NSDictionary *)props
 {
+
+    NSString* title = [props valueForKey: @"label"];
+    NSString* cmds = [props valueForKey: @"keys"];
+    NSNumber* index = [props valueForKey: @"index"];
+    JSValue *cb = [props valueForKey: @"callback"];
+    NSString *key = nil;
+    NSMenuItem *item = nil;
+    
     if (title == nil || [title isKindOfClass: [NSNull class]])
         title = @"";
     
-    NSString *key = [Menu getKeyFromString:aKey];
-    NSMenuItem *item = nil; //[menu addItemWithTitle:title action:nil keyEquivalent:key ];
-    
-    
-    if(index) {
-        item = [menu insertItemWithTitle:title action:nil keyEquivalent:aKey atIndex:index ];
+    if (cmds != nil && ![cmds isKindOfClass: [NSNull class]]) {
+        key = [Menu getKeyFromString:cmds];
     } else {
-        item = [menu addItemWithTitle:title action:nil keyEquivalent:aKey ];
+        cmds = @"";
+    }
+    
+    if(index != nil && ![index isKindOfClass:[NSNull class]]) {
+        item = [menu insertItemWithTitle:title action:nil keyEquivalent:cmds atIndex:[index integerValue] ];
+    } else {
+        item = [menu addItemWithTitle:title action:nil keyEquivalent:cmds ];
         
     }
-
     
-    NSUInteger modifiers = [Menu getModifiersFromString:aKey];
+    NSUInteger modifiers = [Menu getModifiersFromString:cmds];
     [item setKeyEquivalentModifierMask:modifiers];
     
     if(!menu.supermenu && ![_type isEqualToString:@"statusbar"]) {
@@ -85,16 +90,53 @@
     }
     
     MenuItem* menuItem = [[MenuItem alloc] initWithContext:self.context andMenuItem:item];
+   
+    if (cb != nil && ![cb isKindOfClass: [NSNull class]])
+        [menuItem setCallback:cb];
     
-    if (aCallback != nil || ![aCallback isKindOfClass: [NSNull class]])
-        [menuItem setCallback:aCallback];
-   
-   
     return [JSValue valueWithObject:menuItem inContext:[JSContext currentContext] ];
-       
-    
     
 }
+
+//- (JSValue*) addItemWithTitle:(NSString*)title
+//                keyEquivalent:(NSString*)aKey
+//                      atIndex:(NSInteger)index
+//                     callback:(JSValue*)aCallback
+//{
+//    if (title == nil || [title isKindOfClass: [NSNull class]])
+//        title = @"";
+//    
+//    NSString *key = [Menu getKeyFromString:aKey];
+//    NSMenuItem *item = nil; //[menu addItemWithTitle:title action:nil keyEquivalent:key ];
+//    
+//    
+//    if(index) {
+//        item = [menu insertItemWithTitle:title action:nil keyEquivalent:aKey atIndex:index ];
+//    } else {
+//        item = [menu addItemWithTitle:title action:nil keyEquivalent:aKey ];
+//        
+//    }
+//
+//    
+//    NSUInteger modifiers = [Menu getModifiersFromString:aKey];
+//    [item setKeyEquivalentModifierMask:modifiers];
+//    
+//    if(!menu.supermenu && ![_type isEqualToString:@"statusbar"]) {
+//        NSMenu *s = [[NSMenu alloc] initWithTitle:title];
+//        [item setSubmenu:s];
+//    }
+//    
+//    MenuItem* menuItem = [[MenuItem alloc] initWithContext:self.context andMenuItem:item];
+//    
+//    if (aCallback != nil || ![aCallback isKindOfClass: [NSNull class]])
+//        [menuItem setCallback:aCallback];
+//   
+//   
+//    return [JSValue valueWithObject:menuItem inContext:[JSContext currentContext] ];
+//       
+//    
+//    
+//}
 
 - (JSValue*) addSeparator
 {
@@ -126,6 +168,7 @@
     }
     if (!item)
         return nil;
+    
     MenuItem *mi = [[MenuItem alloc] initWithContext:[JSContext currentContext] andMenuItem:item];
     return [JSValue valueWithObject: mi inContext: [JSContext currentContext]];
 }
@@ -160,6 +203,34 @@
     return modifiers;
 }
 
+- (NSMenu*)removeItem:(id)key
+{
+    if(key == nil || [key isKindOfClass: [NSNull class]]) {
+        return nil;
+    }
+    
+    NSMenuItem *item = nil;
+   
+    if ([key isKindOfClass:[NSNumber class]])
+    {
+        item = [menu itemAtIndex:[key intValue]];
+    }
+    else if ([key isKindOfClass:[NSString class]])
+    {
+        item = [menu itemWithTitle:key];
+        if (!item)
+        {
+            // Try again, with ... appended. e.g. "Save..."
+            item = [menu itemWithTitle:
+                    [key stringByAppendingString:@"\u2026"]];
+        }
+    }
+    if (!item)
+        return nil;
+    
+    [menu removeItem:item];
+    return menu;
+}
 
 
 @end
