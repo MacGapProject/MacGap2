@@ -8,9 +8,10 @@
 
 #import "Command.h"
 @protocol NotifyExports <JSExport>
+- (void) notify:(NSDictionary*)aNotification;
 
 @end
 
-@interface Notify : Command <NotifyExports>
-
+@interface Notify : Command <NotifyExports, NSUserNotificationCenterDelegate>
++ (BOOL) available;
 @end

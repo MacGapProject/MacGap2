@@ -28,7 +28,12 @@
     self.windowController = [[WindowController alloc] initWithURL: kStartPage];
     [self.windowController setWindowParams];
     [self.windowController showWindow:self];
+    [[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self];
 }
 
-
+- (BOOL)userNotificationCenter:(NSUserNotificationCenter *)center
+     shouldPresentNotification:(NSUserNotification *)notification
+{
+    return YES;
+}
 @end

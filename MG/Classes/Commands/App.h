@@ -8,7 +8,6 @@
 
 #import "Command.h"
 
-@class WebView;
 
 @protocol AppExports <JSExport>
 

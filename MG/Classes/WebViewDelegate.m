@@ -9,11 +9,7 @@
 
 #import "WebViewDelegate.h"
 #import "WindowController.h"
-#import "Dock.h"
-#import "Menu.h"
-#import "Dialog.h"
-#import "App.h"
-#import "Fonts.h"
+#import "MacGap.h"
 
 @implementation WebViewDelegate
 

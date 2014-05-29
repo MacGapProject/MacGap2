@@ -13,7 +13,7 @@
 @property (readonly) NSString* type;
 @property (readonly) NSArray* menuItems;
 
-+ (JSValue*) create: (NSString*) title type: (NSString*) type;
+JSExportAs(create, - (JSValue*) create: (NSString*) title type: (NSString*) type);
 
 JSExportAs(addItem, - (JSValue*) addItemWithTitle:(NSString*)title keyEquivalent:(NSString*)aKey atIndex:(NSInteger)index callback:(JSValue*)aCallback);
 

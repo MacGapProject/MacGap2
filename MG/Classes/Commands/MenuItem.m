@@ -44,7 +44,7 @@
 
 - (void) fireCallback
 {
-    NSLog(@"called");
+   
     JSValue* cb = self.callback.value;
     
     [cb callWithArguments: @[]];

@@ -6,7 +6,10 @@
     "plugins" : {
                 "Dock":"Dock",
                 "Dialog":"Dialog",
-                "Fonts" : "Fonts"
+                "Fonts" : "Fonts",
+                "Notify" : "Notify",
+            "Clipboard":"Clipboard",
+        "StatusItem":"StatusItem"
                  },
     "window" : {
         "title" : "MacGap",

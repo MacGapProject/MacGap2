@@ -9,12 +9,17 @@
 
 #import <JavaScriptCore/JavaScriptCore.h>
 #import "WebViewDelegate.h"
+#import "Command.h"
 #import "App.h"
 #import "Window.h"
 #import "Menu.h"
+#import "MenuItem.h"
 #import "Dialog.h"
 #import "Dock.h"
 #import "Task.h"
+#import "Notify.h"
+#import "Fonts.h"
+
 #import "NSData+Base64.h"
 #import "JSON.h"
 

@@ -46,7 +46,7 @@
     return self;
 }
 
-+ (JSValue*) create: (NSString*) title type: (NSString*) type
+- (JSValue*) create: (NSString*) title type: (NSString*) type
 {
     NSMenu* newMenu = [[NSMenu alloc] initWithTitle:title];
     Menu* menu = [[Menu alloc] initWithMenu:newMenu forContext: [JSContext currentContext]];
@@ -79,7 +79,7 @@
     NSUInteger modifiers = [Menu getModifiersFromString:aKey];
     [item setKeyEquivalentModifierMask:modifiers];
     
-    if(!menu.supermenu) {
+    if(!menu.supermenu && ![_type isEqualToString:@"statusbar"]) {
         NSMenu *s = [[NSMenu alloc] initWithTitle:title];
         [item setSubmenu:s];
     }

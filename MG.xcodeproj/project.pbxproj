@@ -33,6 +33,9 @@
 		22B1CEE319353D0800D2C294 /* Notify.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B1CEE219353D0800D2C294 /* Notify.m */; };
 		22B1CEE619353EBB00D2C294 /* App.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B1CEE519353EBB00D2C294 /* App.m */; };
 		22B1CEE919355BD800D2C294 /* Fonts.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B1CEE819355BD800D2C294 /* Fonts.m */; };
+		22B1CEEC19367DE100D2C294 /* Clipboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B1CEEB19367DE100D2C294 /* Clipboard.m */; };
+		22B1CEEF19367ECE00D2C294 /* StatusItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B1CEEE19367ECE00D2C294 /* StatusItem.m */; };
+		22B1CEF21936839000D2C294 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B1CEF11936839000D2C294 /* Utils.m */; };
 		22DC8861192EE8DF00A909A3 /* Dock.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DC8860192EE8DF00A909A3 /* Dock.m */; };
 		22DC8864192FBE6400A909A3 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DC8863192FBE6400A909A3 /* Event.m */; };
 		22DC8867192FD2BA00A909A3 /* MenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DC8866192FD2BA00A909A3 /* MenuItem.m */; };
@@ -97,6 +100,12 @@
 		22B1CEE519353EBB00D2C294 /* App.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = App.m; sourceTree = "<group>"; };
 		22B1CEE719355BD800D2C294 /* Fonts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fonts.h; sourceTree = "<group>"; };
 		22B1CEE819355BD800D2C294 /* Fonts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Fonts.m; sourceTree = "<group>"; };
+		22B1CEEA19367DE100D2C294 /* Clipboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Clipboard.h; sourceTree = "<group>"; };
+		22B1CEEB19367DE100D2C294 /* Clipboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Clipboard.m; sourceTree = "<group>"; };
+		22B1CEED19367ECE00D2C294 /* StatusItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusItem.h; sourceTree = "<group>"; };
+		22B1CEEE19367ECE00D2C294 /* StatusItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusItem.m; sourceTree = "<group>"; };
+		22B1CEF01936839000D2C294 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utils.h; path = Classes/Utils.h; sourceTree = "<group>"; };
+		22B1CEF11936839000D2C294 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Utils.m; path = Classes/Utils.m; sourceTree = "<group>"; };
 		22DC885F192EE8DF00A909A3 /* Dock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dock.h; sourceTree = "<group>"; };
 		22DC8860192EE8DF00A909A3 /* Dock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dock.m; sourceTree = "<group>"; };
 		22DC8862192FBE6400A909A3 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
@@ -225,6 +234,8 @@
 				2237E69B192B0ED9001E1393 /* WebViewDelegate.h */,
 				2237E69C192B0ED9001E1393 /* WebViewDelegate.m */,
 				2237E6B9192B8E2A001E1393 /* Constants.h */,
+				22B1CEF01936839000D2C294 /* Utils.h */,
+				22B1CEF11936839000D2C294 /* Utils.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -242,13 +253,15 @@
 			isa = PBXGroup;
 			children = (
 				22ABE343192C5E3500497794 /* MacGap.h */,
+				22B1CEEA19367DE100D2C294 /* Clipboard.h */,
+				22B1CEEB19367DE100D2C294 /* Clipboard.m */,
 				22DC8868192FF10B00A909A3 /* Command.h */,
 				22DC8869192FF10B00A909A3 /* Command.m */,
-				2237E6FA192C17AA001E1393 /* Menu.h */,
-				22B1CEE119353D0800D2C294 /* Notify.h */,
 				22B1CEE719355BD800D2C294 /* Fonts.h */,
 				22B1CEE819355BD800D2C294 /* Fonts.m */,
+				22B1CEE119353D0800D2C294 /* Notify.h */,
 				22B1CEE219353D0800D2C294 /* Notify.m */,
+				2237E6FA192C17AA001E1393 /* Menu.h */,
 				2237E6FB192C17AA001E1393 /* Menu.m */,
 				22DC8865192FD2BA00A909A3 /* MenuItem.h */,
 				22DC8866192FD2BA00A909A3 /* MenuItem.m */,
@@ -264,6 +277,8 @@
 				22B1CEDF193539A300D2C294 /* Task.m */,
 				22B1CEE419353EBB00D2C294 /* App.h */,
 				22B1CEE519353EBB00D2C294 /* App.m */,
+				22B1CEED19367ECE00D2C294 /* StatusItem.h */,
+				22B1CEEE19367ECE00D2C294 /* StatusItem.m */,
 			);
 			name = Commands;
 			path = Classes/Commands;
@@ -379,8 +394,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22B1CEEF19367ECE00D2C294 /* StatusItem.m in Sources */,
 				22B1CEE0193539A300D2C294 /* Task.m in Sources */,
 				22B1CEE619353EBB00D2C294 /* App.m in Sources */,
+				22B1CEF21936839000D2C294 /* Utils.m in Sources */,
 				22B1CEE319353D0800D2C294 /* Notify.m in Sources */,
 				2237E65D192B0177001E1393 /* AppDelegate.m in Sources */,
 				2237E6E6192B90EE001E1393 /* JSON.m in Sources */,
@@ -391,6 +408,7 @@
 				2237E6FC192C17AA001E1393 /* Menu.m in Sources */,
 				2237E68C192B09C5001E1393 /* WindowController.m in Sources */,
 				22DC886A192FF10B00A909A3 /* Command.m in Sources */,
+				22B1CEEC19367DE100D2C294 /* Clipboard.m in Sources */,
 				22B1CEDD1934F27F00D2C294 /* Dialog.m in Sources */,
 				22DC8861192EE8DF00A909A3 /* Dock.m in Sources */,
 				22B1CEE919355BD800D2C294 /* Fonts.m in Sources */,
