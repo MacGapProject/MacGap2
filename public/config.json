@@ -11,7 +11,8 @@
                 "Clipboard":"Clipboard",
                 "StatusItem":"StatusItem",
                 "Task" : "Task",
-                "Sound" : "Sound"
+                "Sound" : "Sound",
+                "Defaults" : "Defaults"
                  },
     "window" : {
         "title" : "MacGap",
