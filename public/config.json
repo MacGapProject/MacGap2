@@ -8,9 +8,10 @@
                 "Dialog":"Dialog",
                 "Fonts" : "Fonts",
                 "Notify" : "Notify",
-            "Clipboard":"Clipboard",
-        "StatusItem":"StatusItem",
-        "Task" : "Task"
+                "Clipboard":"Clipboard",
+                "StatusItem":"StatusItem",
+                "Task" : "Task",
+                "Sound" : "Sound"
                  },
     "window" : {
         "title" : "MacGap",

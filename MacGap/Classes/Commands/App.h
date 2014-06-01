@@ -31,6 +31,5 @@ JSExportAs(setUserAgent, - (void) setCustomUserAgent:(NSString *)userAgentString
 
 @interface App : Command <AppExports>
 
-@property (nonatomic, retain) WebView* webView;
 - (id) initWithWebView:(WebView *)view;
 @end

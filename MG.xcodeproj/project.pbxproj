@@ -11,6 +11,7 @@
 		2237E67E192B0186001E1393 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2237E67D192B0186001E1393 /* WebKit.framework */; };
 		2237E680192B018D001E1393 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2237E67F192B018D001E1393 /* JavaScriptCore.framework */; };
 		2237E6EF192BAF85001E1393 /* public in Resources */ = {isa = PBXBuildFile; fileRef = 2237E6EE192BAF85001E1393 /* public */; };
+		226AE65D193AA8FC00B15FB7 /* Sound.m in Sources */ = {isa = PBXBuildFile; fileRef = 226AE65C193AA8FC00B15FB7 /* Sound.m */; };
 		22B1CF2B1937734B00D2C294 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B1CEF51937734B00D2C294 /* AppDelegate.m */; };
 		22B1CF2C1937734B00D2C294 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22B1CEF61937734B00D2C294 /* MainMenu.xib */; };
 		22B1CF2D1937734B00D2C294 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22B1CEF81937734B00D2C294 /* MainWindow.xib */; };
@@ -49,6 +50,8 @@
 		2237E67D192B0186001E1393 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		2237E67F192B018D001E1393 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		2237E6EE192BAF85001E1393 /* public */ = {isa = PBXFileReference; lastKnownFileType = folder; path = public; sourceTree = "<group>"; };
+		226AE65B193AA8FC00B15FB7 /* Sound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sound.h; sourceTree = "<group>"; };
+		226AE65C193AA8FC00B15FB7 /* Sound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sound.m; sourceTree = "<group>"; };
 		22B1CEF41937734B00D2C294 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		22B1CEF51937734B00D2C294 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		22B1CEF71937734B00D2C294 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -222,6 +225,8 @@
 				22B1CF191937734B00D2C294 /* Task.m */,
 				22B1CF1A1937734B00D2C294 /* Window.h */,
 				22B1CF1B1937734B00D2C294 /* Window.m */,
+				226AE65B193AA8FC00B15FB7 /* Sound.h */,
+				226AE65C193AA8FC00B15FB7 /* Sound.m */,
 			);
 			path = Commands;
 			sourceTree = "<group>";
@@ -331,6 +336,7 @@
 				22B1CF2F1937734B00D2C294 /* NSData+Base64.m in Sources */,
 				22B1CF431937734B00D2C294 /* main.m in Sources */,
 				22B1CF321937734B00D2C294 /* Command.m in Sources */,
+				226AE65D193AA8FC00B15FB7 /* Sound.m in Sources */,
 				22B1CF331937734B00D2C294 /* Dialog.m in Sources */,
 				22B1CF361937734B00D2C294 /* Fonts.m in Sources */,
 				22B1CF2B1937734B00D2C294 /* AppDelegate.m in Sources */,

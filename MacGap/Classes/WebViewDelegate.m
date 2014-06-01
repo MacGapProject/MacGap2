@@ -13,7 +13,7 @@
 
 @implementation WebViewDelegate
 
-@synthesize windowController, window;
+@synthesize windowController;
 
 - (id) initWithMenu:(NSMenu*)aMenu
 {

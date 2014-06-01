@@ -8,6 +8,7 @@
 
 
 #import <JavaScriptCore/JavaScriptCore.h>
+#import "WindowController.h"
 #import "WebViewDelegate.h"
 #import "Command.h"
 #import "App.h"
@@ -19,6 +20,7 @@
 #import "Task.h"
 #import "Notify.h"
 #import "Fonts.h"
+#import "StatusItem.h"
 
 #import "NSData+Base64.h"
 #import "JSON.h"
