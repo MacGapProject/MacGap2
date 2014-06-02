@@ -12,6 +12,7 @@
 
 @protocol DialogExports <JSExport>
 - (void) openDialog:(JSValue *)args;
+- (void) saveDialog: (JSValue*)args;
 @end
 
 @interface Dialog : Command <DialogExports>

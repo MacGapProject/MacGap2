@@ -42,7 +42,7 @@ typedef void (^SetType)();
 
 - (JSValue*) defaults
 {
-     return [JSValue valueWithObject: [[self defaultsDictionary] JSONString] inContext: [JSContext currentContext] ];
+     return [JSValue valueWithObject: [self defaultsDictionary] inContext: [JSContext currentContext] ];
 }
 
 - (JSValue*) get:(NSString *)key ofType:(NSString *)type

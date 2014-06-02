@@ -8,6 +8,11 @@
 
 #import "StatusItem.h"
 #import "WindowController.h"
+#import "Event.h"
+
+@interface StatusItem ()
+@property (strong) JSValue* callback;
+@end
 
 @implementation StatusItem
 @synthesize menu;
@@ -27,9 +32,13 @@
     
     NSString *image = [props valueForKey:@"image"];
     NSString *alternateImage = [props valueForKey:@"alternateImage"];
+    JSValue * cb = [props valueForKey: @"onClick"];
     
     NSURL* imgfileUrl = nil;
     NSURL* altImgfileUrl = nil;
+    
+    if(cb)
+        _callback = cb;
     
     if(image)
         imgfileUrl  = [NSURL fileURLWithPath:pathForResource(image)];
@@ -56,6 +65,11 @@
 
 - (void)  itemClicked:(id)sender
 {
+    if(_callback) {
+        [_callback callWithArguments:@[]];
+    } else {
+        [Event triggerEvent:@"statusItemClick" forWebView:self.webView];
+    }
     
 }
 @end
