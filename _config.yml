@@ -28,7 +28,7 @@ baseurl: '/MacGap2'
 permalink: none
 
 # Syntax highlighting
-pygments: true
+highlighter: 'pygments'
 
 # Since these are pages, it doesn't really matter
 future: true
