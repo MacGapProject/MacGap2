@@ -166,16 +166,16 @@
         menu = [[Menu alloc] initWithMenu:mainMenu forContext:context];
     }
     
-    context[@"macgap"] = app;
-    context[@"macgap"][@"Window"] = window;
-    context[@"macgap"][@"Menu"] = menu;
+    context[kWebScriptNamespace] = app;
+    context[kWebScriptNamespace][@"Window"] = window;
+    context[kWebScriptNamespace][@"Menu"] = menu;
     
     //Init user selected plugins
     for( NSString* plugin in windowController.pluginsMap) {
        
         id obj = [[NSClassFromString(plugin)alloc] initWithWindowController: windowController];
         NSString *exportName = [obj exportName];
-        context[@"macgap"][exportName] = obj;
+        context[kWebScriptNamespace][exportName] = obj;
     }
 }
 

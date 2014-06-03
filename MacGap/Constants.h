@@ -9,11 +9,5 @@
 // Application constants
 
 #define kStartPage @"public/index.html"
-
 #define kStartFolder @"."
-
-#define kWebScriptNamespace @"mg"
-
-#define kCustomProtocolScheme @"mg"
-
-#define kQueueHasMessage      @"__MG_QUEUE_MESSAGE__"
+#define kWebScriptNamespace @"MacGap"
