@@ -1,5 +1,5 @@
 # Site title and subtitle. This is used in _includes/header.html
-title: 'MacGap 2'
+title: 'MacGap'
 subtitle: 'Desktop WebKit wrapper for HTML/CSS/JS applications.'
 
 # Enable/show navigation. There are there options:

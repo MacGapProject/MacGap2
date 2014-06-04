@@ -1,6 +1,7 @@
 body {
     font-weight: 400;
-    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);
+    font-family: 'Lato';
+    padding-top: 50px;
 }
 
 pre, code {
@@ -13,7 +14,11 @@ pre, code {
 pre {
     font-size: 1em;
 }
-
+a,
+a:hover {
+    text-decoration: none;
+    color: #d96b5d;
+}
 code {
     color: inherit;
 }
@@ -33,7 +38,9 @@ code {
     color: #999;
     text-align: center;
 }
-
+#main {
+    padding:20px;
+}
 #content > .page-header:first-child {
     margin-top: 0;
 }
@@ -52,7 +59,58 @@ code {
     padding-right: 10px;
 }
 
-#navigation .nav-header {
-    padding-left: 0;
-    padding-right: 0;
+
+.sidebar {
+    position: fixed;
+    top: 51px;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    display: block;
+    padding: 20px 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    border-right: 1px solid #EEE;
+}
+
+.sidebar .nav li {
+    padding-left: 20px;
+    border-left: 4px solid transparent;
+}
+.sidebar .nav li:hover {
+    background: #f1f1f1;
+    border-color: #d96b5d;
+
+}
+.sidebar .nav li a {
+    color: #949494;
+}
+.sidebar .nav li a:hover {
+    background: none;
+}
+.sidebar .nav li.nav-header {
+    padding-left: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+.sidebar .nav li.nav-header:hover {
+    border-color: transparent;
+    background: none;
+}
+.navbar-inverse {
+    background-color: #444;
+    border-color: #333;
+}
+
+.navbar-header h4 {
+    margin-top: 13px;
+    color: white;
+  
+}
+.navbar-header h4 a{
+    color: white;
+    letter-spacing: 1px;
+    text-shadow: none;
 }
