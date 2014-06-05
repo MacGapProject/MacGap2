@@ -45,8 +45,24 @@
     }
     task.launchPath = path;
     self.environment = task.environment;
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(taskDidTerminate:)
+                                                 name:NSTaskDidTerminateNotification
+                                               object:nil];
 
     return [JSValue valueWithObject:self inContext:[JSContext currentContext]];
+}
+- (void) taskDidTerminate: (NSNotification*)notification
+{
+  
+    NSTask *aTask = notification.object;
+    int status = [aTask terminationStatus];
+    NSDictionary *result = @{ @"status" : [NSNumber numberWithInt:status], @"stdOut" : aTask.standardOutput, @"stdIn" : aTask.standardInput, @"stdErr" : aTask.standardError };
+    
+    dispatch_sync(dispatch_get_main_queue(), ^{
+           [callback.value callWithArguments:@[result]];
+       });
+   
 }
 
 - (void) setArguments:(NSArray *)arguments

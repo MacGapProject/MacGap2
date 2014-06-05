@@ -24,4 +24,5 @@ JSExportAs(create, - (JSValue*) createTask: (NSString*) path withCallback: (JSVa
 
 @interface Task : Command <TaskExports>
 @property (strong) NSTask* task;
+@property (nonatomic, strong) NSPipe *outputPipe;
 @end
