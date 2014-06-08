@@ -21,6 +21,8 @@
 #import "Notify.h"
 #import "Fonts.h"
 #import "StatusItem.h"
+#import "Event.h"
+
 
 #import "NSData+Base64.h"
 #import "JSON.h"

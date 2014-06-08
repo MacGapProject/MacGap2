@@ -26,10 +26,11 @@ JSExportAs(setUserAgent, - (void) setCustomUserAgent:(NSString *)userAgentString
 @property (readonly) NSString* libraryPath;
 @property (readonly) NSString* homePath;
 @property (readonly) NSString* tempPath;
-
+@property (readonly) NSArray* droppedFiles;
 @end
 
 @interface App : Command <AppExports>
 
 - (id) initWithWebView:(WebView *)view;
+- (void) addFiles: (NSArray*) files;
 @end

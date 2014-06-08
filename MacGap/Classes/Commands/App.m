@@ -16,6 +16,7 @@
 @property (readwrite) NSString* libraryPath;
 @property (readwrite) NSString* homePath;
 @property (readwrite) NSString* tempPath;
+@property (readwrite) NSArray* droppedFiles;
 
 @end
 
@@ -36,6 +37,7 @@
         self.libraryPath = [libPaths objectAtIndex:0];
         self.homePath = NSHomeDirectory();
         self.tempPath = NSTemporaryDirectory();
+        self.droppedFiles = nil;
         
         [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver: self
                                                                selector: @selector(receiveSleepNotification:)
@@ -75,6 +77,10 @@
     [NSApp requestUserAttention:NSInformationalRequest];
 }
 
+- (void) addFiles: (NSArray*) files
+{
+    self.droppedFiles = files;
+}
 - (void)setCustomUserAgent:(NSString *)userAgentString {
     [self.webView setCustomUserAgent: userAgentString];
 }

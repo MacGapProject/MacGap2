@@ -44,6 +44,24 @@
     }];
 }
 
+- (void)webView:(WebView *)sender willPerformDragDestinationAction:(WebDragDestinationAction)action forDraggingInfo:(id < NSDraggingInfo >)draggingInfo
+{
+    NSArray *files = nil;
+    if (action == WebDragDestinationActionDHTML) {
+        NSPasteboard *pboard = [draggingInfo draggingPasteboard];
+      
+        if([[pboard types] containsObject:NSURLPboardType] ) {
+            
+           files = [pboard propertyListForType:NSFilenamesPboardType];
+      
+        }
+    }
+    if(files) {
+        [app addFiles:files];
+    }
+}
+
+
 - (void) webView:(WebView*)webView addMessageToConsole:(NSDictionary*)message
 {
 	if (![message isKindOfClass:[NSDictionary class]]) {
