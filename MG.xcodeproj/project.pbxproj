@@ -12,6 +12,7 @@
 		2237E680192B018D001E1393 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2237E67F192B018D001E1393 /* JavaScriptCore.framework */; };
 		2237E6EF192BAF85001E1393 /* public in Resources */ = {isa = PBXBuildFile; fileRef = 2237E6EE192BAF85001E1393 /* public */; };
 		226AE65D193AA8FC00B15FB7 /* Sound.m in Sources */ = {isa = PBXBuildFile; fileRef = 226AE65C193AA8FC00B15FB7 /* Sound.m */; };
+		22A676E71944B140002F81FB /* File.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A676E61944B140002F81FB /* File.m */; };
 		22B1CF2B1937734B00D2C294 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B1CEF51937734B00D2C294 /* AppDelegate.m */; };
 		22B1CF2C1937734B00D2C294 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22B1CEF61937734B00D2C294 /* MainMenu.xib */; };
 		22B1CF2D1937734B00D2C294 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22B1CEF81937734B00D2C294 /* MainWindow.xib */; };
@@ -53,6 +54,8 @@
 		2237E6EE192BAF85001E1393 /* public */ = {isa = PBXFileReference; lastKnownFileType = folder; path = public; sourceTree = "<group>"; };
 		226AE65B193AA8FC00B15FB7 /* Sound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sound.h; sourceTree = "<group>"; };
 		226AE65C193AA8FC00B15FB7 /* Sound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sound.m; sourceTree = "<group>"; };
+		22A676E51944B140002F81FB /* File.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = File.h; sourceTree = "<group>"; };
+		22A676E61944B140002F81FB /* File.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = File.m; sourceTree = "<group>"; };
 		22B1CEF41937734B00D2C294 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		22B1CEF51937734B00D2C294 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		22B1CEF71937734B00D2C294 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -232,6 +235,8 @@
 				226AE65C193AA8FC00B15FB7 /* Sound.m */,
 				22BE36EB193B7F8800D8199F /* Defaults.h */,
 				22BE36EC193B7F8800D8199F /* Defaults.m */,
+				22A676E51944B140002F81FB /* File.h */,
+				22A676E61944B140002F81FB /* File.m */,
 			);
 			path = Commands;
 			sourceTree = "<group>";
@@ -333,6 +338,7 @@
 				22B1CF381937734B00D2C294 /* MenuItem.m in Sources */,
 				22B1CF301937734B00D2C294 /* App.m in Sources */,
 				22B1CF371937734B00D2C294 /* Menu.m in Sources */,
+				22A676E71944B140002F81FB /* File.m in Sources */,
 				22B1CF3C1937734B00D2C294 /* Window.m in Sources */,
 				22B1CF3F1937734B00D2C294 /* WindowController.m in Sources */,
 				22B1CF3D1937734B00D2C294 /* Utils.m in Sources */,

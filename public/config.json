@@ -12,7 +12,8 @@
                 "StatusItem":"StatusItem",
                 "Task" : "Task",
                 "Sound" : "Sound",
-                "Defaults" : "Defaults"
+                "Defaults" : "Defaults",
+        "File" : "File"
                  },
     "window" : {
         "title" : "MacGap",

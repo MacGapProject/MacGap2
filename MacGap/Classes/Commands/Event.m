@@ -25,4 +25,10 @@
     [webView stringByEvaluatingJavaScriptFromString:str];
 }
 
++ (void) triggerDomEvent:(NSString *)event withArgs:(NSDictionary *)args forWebView:(WebView *)webView {
+    
+    NSString * str = [NSString stringWithFormat:@"var e = new CustomEvent('%@', %@); document.dispatchEvent(e);", event, args.JSONString];
+    [webView stringByEvaluatingJavaScriptFromString:str];
+}
+
 @end
