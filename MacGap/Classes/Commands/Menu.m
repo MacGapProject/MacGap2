@@ -71,13 +71,13 @@
     if (cmds != nil && ![cmds isKindOfClass: [NSNull class]]) {
         key = [Menu getKeyFromString:cmds];
     } else {
-        cmds = @"";
+        key = @"";
     }
-    
+   
     if(index != nil && ![index isKindOfClass:[NSNull class]]) {
-        item = [menu insertItemWithTitle:title action:nil keyEquivalent:cmds atIndex:[index integerValue] ];
+        item = [menu insertItemWithTitle:title action:nil keyEquivalent:key atIndex:[index integerValue] ];
     } else {
-        item = [menu addItemWithTitle:title action:nil keyEquivalent:cmds ];
+        item = [menu addItemWithTitle:title action:nil keyEquivalent:key ];
         
     }
     
@@ -101,46 +101,6 @@
     return [JSValue valueWithObject:menuItem inContext:[JSContext currentContext] ];
     
 }
-
-//- (JSValue*) addItemWithTitle:(NSString*)title
-//                keyEquivalent:(NSString*)aKey
-//                      atIndex:(NSInteger)index
-//                     callback:(JSValue*)aCallback
-//{
-//    if (title == nil || [title isKindOfClass: [NSNull class]])
-//        title = @"";
-//    
-//    NSString *key = [Menu getKeyFromString:aKey];
-//    NSMenuItem *item = nil; //[menu addItemWithTitle:title action:nil keyEquivalent:key ];
-//    
-//    
-//    if(index) {
-//        item = [menu insertItemWithTitle:title action:nil keyEquivalent:aKey atIndex:index ];
-//    } else {
-//        item = [menu addItemWithTitle:title action:nil keyEquivalent:aKey ];
-//        
-//    }
-//
-//    
-//    NSUInteger modifiers = [Menu getModifiersFromString:aKey];
-//    [item setKeyEquivalentModifierMask:modifiers];
-//    
-//    if(!menu.supermenu && ![_type isEqualToString:@"statusbar"]) {
-//        NSMenu *s = [[NSMenu alloc] initWithTitle:title];
-//        [item setSubmenu:s];
-//    }
-//    
-//    MenuItem* menuItem = [[MenuItem alloc] initWithContext:self.context andMenuItem:item];
-//    
-//    if (aCallback != nil || ![aCallback isKindOfClass: [NSNull class]])
-//        [menuItem setCallback:aCallback];
-//   
-//   
-//    return [JSValue valueWithObject:menuItem inContext:[JSContext currentContext] ];
-//       
-//    
-//    
-//}
 
 - (JSValue*) addSeparator
 {
@@ -181,7 +141,7 @@
 + (NSString*)getKeyFromString:(NSString*)keyCommand {
     if (keyCommand == nil || [keyCommand isKindOfClass: [NSNull class]])
         keyCommand = @"";
-    
+   
     // Obtain the key (if there are modifiers, it will be the last character).
     NSString *aKey = @"";
     if ([keyCommand length] > 0) {
