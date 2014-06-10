@@ -55,16 +55,16 @@
     return [JSValue valueWithObject:menu inContext:[JSContext currentContext]];
 }
 
-- (JSValue*) addItem:(NSDictionary *)props
+- (JSValue*) addItem: (NSDictionary*) props callback: (JSValue*) aCallback
 {
 
     NSString* title = [props valueForKey: @"label"];
     NSString* cmds = [props valueForKey: @"keys"];
     NSNumber* index = [props valueForKey: @"index"];
-    JSValue *cb = [props valueForKey: @"callback"];
+    //JSValue *cb = [props valueForKey: @"callback"];
     NSString *key = nil;
     NSMenuItem *item = nil;
-    
+
     if (title == nil || [title isKindOfClass: [NSNull class]])
         title = @"";
     
@@ -91,8 +91,12 @@
     
     MenuItem* menuItem = [[MenuItem alloc] initWithContext:self.context andMenuItem:item];
    
-    if (cb != nil && ![cb isKindOfClass: [NSNull class]])
-        [menuItem setCallback:cb];
+   // if (cb != nil && ![cb isKindOfClass: [NSNull class]]) {
+    if(aCallback != nil && ![aCallback isKindOfClass: [NSNull class]]) {
+    
+        [menuItem setCallback:aCallback];
+    
+    }
     
     return [JSValue valueWithObject:menuItem inContext:[JSContext currentContext] ];
     

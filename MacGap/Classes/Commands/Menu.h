@@ -15,7 +15,7 @@
 
 JSExportAs(create, - (JSValue*) create: (NSString*) title type: (NSString*) type);
 
-- (JSValue*) addItem: (NSDictionary*) props;
+JSExportAs(addItem, - (JSValue*) addItem: (NSDictionary*) props callback: (JSValue*) aCallback);
 
 JSExportAs(getItem, - (JSValue*) itemForKey:(id)key);
 
