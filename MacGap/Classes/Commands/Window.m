@@ -14,6 +14,7 @@
 @interface Window ()
 {
     NSRect _oldRestoreFrame;
+    NSSize _oldMaxSize;
 }
     @property (nonatomic, retain) WindowController *windowController;
     @property (nonatomic, retain) WebView *webView;
@@ -129,7 +130,12 @@
                                              selector:@selector(windowEnterFullscreen:)
                                                  name:NSWindowDidEnterFullScreenNotification
                                                object: self.windowController.window];
-
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(windowWillEnterFullscreen:)
+                                                 name:NSWindowWillEnterFullScreenNotification
+                                               object: self.windowController.window];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(windowExitFullscreen:)
                                                  name:NSWindowDidExitFullScreenNotification
@@ -166,6 +172,13 @@
     [self triggerEvent:@"restore"];
 }
 
+- (void) windowWillEnterFullscreen:(NSNotification*)notification
+{
+    NSWindow* window = (NSWindow*)notification.object;
+    _oldMaxSize = window.maxSize;
+    [window setMaxSize: NSMakeSize(FLT_MAX, FLT_MAX)];
+}
+
 - (void) windowEnterFullscreen:(NSNotification*)notification
 {
 
@@ -174,6 +187,12 @@
 
 - (void) windowExitFullscreen:(NSNotification*)notification
 {
+    NSWindow* window = (NSWindow*)notification.object;
+    
+    if(_oldMaxSize.width){
+        [window setMaxSize:_oldMaxSize];
+    }
+    
     [self triggerEvent:@"leave-fullscreen"];
 }
 
