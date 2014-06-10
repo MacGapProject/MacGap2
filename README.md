@@ -6,10 +6,10 @@
 
 ## Commands
 
-All commands in the macgap property are now capitalized except the base macgap object, not sure if I should change this or not.
+All commands in the MacGap property are now capitalized except the base MacGap object, not sure if I should change this or not.
 
 
-### macgap
+### MacGap
 
 Properties | description
 ---------- | -----------
@@ -34,7 +34,7 @@ bounce | none |
 setUserAgent | string |
 
 
-### macgap.Window
+### MacGap.Window
 
 Properties | description
 ---------- | -----------
@@ -54,7 +54,7 @@ restore  | none |
 toggleFullscreen | none |
 
 
-### macgap.Menu
+### MacGap.Menu
 
 Properties | description
 ---------- | -----------
@@ -71,7 +71,7 @@ create | (string) title, (string) type | type is optional except for status bar 
 
 
 
-### macgap.MenuItem
+### MacGap.MenuItem
 
 Properties | description
 ---------- | -----------
@@ -89,7 +89,7 @@ remove | none |
 
 
 
-### macgap.StatusItem
+### MacGap.StatusItem
 
 Properties | description
 ---------- | -----------
@@ -103,14 +103,14 @@ createItem | (*object*) { image: "path/to/image", alternateImage: "path/to/alt/i
 
 
 
-### macgap.Dialog
+### MacGap.Dialog
 
 Methods  | Arguments | description
 -------- | --------- | ------------
 openDialog | (*object*) { files: true, multiple: true, directories: true, callback: function() {...} } | all params are optional and default to false
 saveDialog | (*object*) { {title:"Sheet Title", prompt: "Button Text", message: "Sheet Message", filename: "myfile.txt", createDirs: true, allowedTypes: ['txt', 'doc', 'js'], callback: function(result) { console.log(result); }}} |
 
-### macgap.Task
+### MacGap.Task
 
 Properties | description
 ---------- | -----------
@@ -128,7 +128,7 @@ terminate | none | kills currently running task
 
 
 
-### macgap.Defaults
+### MacGap.Defaults
 
 Properties | description
 ---------- | -----------
@@ -146,7 +146,7 @@ get | (string) key, (string) type | type is optional, if not defined, will retur
 
 ### Menus
 	//add main menu item to a menu - everything but label is optional
-	var myMenu = macgap.Menu.addItem({label: 'My Label', index: 1 });
+	var myMenu = MacGap.Menu.addItem({label: 'My Label', index: 1 });
 
 	//add item to newly created menu
 	myMenu.addItem({label: 'My Label', keys: 'cmd+t', callback: function() { ... } });
@@ -163,20 +163,20 @@ more to follow
 ### StatusBar
 
 	 //create simple status item
-     macgap.StatusItem.create({image:"path/to/image", alternateImage: "path/to/altimage"});
+     MacGap.StatusItem.create({image:"path/to/image", alternateImage: "path/to/altimage"});
      
      //create status item with click callback
-     macgap.StatusItem.create({image:"path/to/image", alternateImage: "path/to/altimage", onClick: function() { ... } });
+     MacGap.StatusItem.create({image:"path/to/image", alternateImage: "path/to/altimage", onClick: function() { ... } });
 
 	 //Create and add a menu to the statusbar. Note that adding a menu to a status item disables any onClick events
 	 // Setting the second 'type' parameter in the create method to 'statusbar' keeps MacGap from automatically adding sub-menus to the menu items you create (this is because the status items don't have a supermenu like the main menu)
-	 var menu  = macgap.Menu.create('My Menu', 'statusbar'); 
+	 var menu  = MacGap.Menu.create('My Menu', 'statusbar'); 
 
 	 // add items to the menu
 	 menu.addItem('My Menu Item', '', 0, function() { alert('I was clicked!'); });
 	 menu.addItem('Another Menu Item', '', 1, function() { ... });
 
 	 //add the menu to the status item
-	 macgap.StatusItem.menu = menu;
+	 MacGap.StatusItem.menu = menu;
 
 
