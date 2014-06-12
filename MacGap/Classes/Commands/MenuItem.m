@@ -22,21 +22,33 @@
 
 @implementation MenuItem
 
-@synthesize callback, submenu, enabled;
+@synthesize callback, submenu, enabled, item, context;
 
++ (MenuItem*) menuItemWithContext: (JSContext*) context andMenu: (NSMenuItem*) aMenuItem
+{
+    MenuItem *ret = [aMenuItem representedObject];
+    if (ret)
+    {
+        NSLog(@"MI Cache Hit");
+        return ret;
+    }
+    return [[MenuItem alloc] initWithContext:context andMenuItem:aMenuItem];
+
+}
 - (id) initWithContext:(JSContext*)aContext andMenuItem:(NSMenuItem*)anItem
 {
     NSAssert(anItem, @"anItem required");
-    self = [super init];
+    self = [super init]; //initWithContext:aContext];
     if (!self)
         return nil;
     item = anItem;
+    item.representedObject = self;
     self.context = aContext;
-    self.label = anItem.title;
-    self.submenu = nil;
-    NSMenu* subMenu = [anItem submenu];
+    self.enabled = [anItem isEnabled];
+    NSMenu* subMenu = [item submenu];
     if(subMenu) {
-        self.submenu = [JSValue valueWithObject: [[Menu alloc] initWithMenu:subMenu forContext:aContext] inContext:aContext];
+       
+        self.submenu = [JSValue valueWithObject: [Menu menuWithContext: aContext andMenu: subMenu] inContext:aContext];
     }
     
     return self;
@@ -44,24 +56,29 @@
 
 - (void) fireCallback
 {
-   
-    JSValue* cb = self.callback.value;
     
-    [cb callWithArguments: @[]];
+    [callback callWithArguments: @[]];
 }
 
 - (void) setCallback:(JSValue*)aCallback
 {
     
-    callback = [JSManagedValue managedValueWithValue:aCallback];
-    [self.context.virtualMachine addManagedReference:callback withOwner:self];
+    callback = aCallback;
     [item setAction:@selector(fireCallback)];
     [item setTarget:self];
 }
 - (void) setEnabled:(BOOL) val
 {
-    enabled = val;
-    [item setEnabled:enabled];
+    if(!val || val == NO) {
+         enabled = NO;
+        [item setEnabled: NO];
+    }
+    if(val == YES) {
+        enabled = YES;
+        [item setEnabled:enabled];
+
+    }
+    
 }
 
 - (JSValue*)addSubmenu: (NSString*) aTitle
@@ -75,7 +92,7 @@
         }
         s = [[NSMenu alloc] initWithTitle:title];
         [item setSubmenu:s];
-        self.submenu = [JSValue valueWithObject: [[Menu alloc] initWithMenu:s forContext:self.context] inContext:self.context];
+        self.submenu = [JSValue valueWithObject: [Menu menuWithContext: self.context andMenu: s] inContext:self.context];
     }
     return self.submenu;
 }
@@ -93,5 +110,8 @@
     [menu removeItem:item];
 }
 
-
+- (void) dealloc
+{
+    NSLog(@"Menu Item Deallocated");
+}
 @end

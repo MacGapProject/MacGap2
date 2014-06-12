@@ -5,9 +5,32 @@
 //  Created by Tim Debo on 5/20/14.
 //
 //
-
+#import <objc/runtime.h>
 #import "Menu.h"
 #import "MenuItem.h"
+
+static char REPRESENTED_OBJECT;
+
+@interface NSMenu (represented)
+@property (strong) id representedObject;
+@end
+
+@implementation NSMenu (represented)
+
+- (id) representedObject
+{
+    return objc_getAssociatedObject(self, &REPRESENTED_OBJECT);
+}
+
+- (void) setRepresentedObject:(id)representedObject
+{
+    objc_setAssociatedObject(self,
+                             &REPRESENTED_OBJECT,
+                             representedObject,
+                             OBJC_ASSOCIATION_RETAIN);
+}
+
+@end
 
 @interface Menu ()
     @property (readwrite) NSString* type;
@@ -18,17 +41,28 @@
 
 @synthesize menu;
 
++ (Menu*) menuWithContext: (JSContext*) context andMenu: (NSMenu*) aMenu
+{
+    Menu *ret = [aMenu representedObject];
+    if (ret)
+    {
+        NSLog(@"MP cache hit");
+        return ret;
+    }
+    return [[Menu alloc] initWithMenu:aMenu forContext:context];
+}
 
 - (Menu*) initWithMenu: (NSMenu*) aMenu forContext: (JSContext*) context{
     
     return [self initWithMenu: aMenu andType: nil forContext:context];
 }
 
-- (Menu*) initWithMenu: (NSMenu*) aMenu andType: (NSString*) type forContext: (JSContext*) context{
-    self = [super init];
+- (Menu*) initWithMenu: (NSMenu*) aMenu andType: (NSString*) type forContext: (JSContext*) aContext{
+    self = [super initWithContext: aContext];
     if (self) {
         
-        self.menu = aMenu;
+        menu = aMenu;
+        menu.representedObject = self;
         self.type = type;
         NSArray* items = aMenu.itemArray;
         NSMutableArray* itemsArr = nil;
@@ -36,12 +70,13 @@
         {
             itemsArr = [NSMutableArray arrayWithCapacity: items.count];
             for( NSMenuItem* item in items) {
-                [itemsArr addObject: [[MenuItem alloc] initWithContext:context andMenuItem:item] ];
+                [itemsArr addObject: [MenuItem menuItemWithContext:aContext andMenu:item] ];
             }
             
         }
         self.menuItems = itemsArr;
-        self.context = context;
+        self.context = aContext;
+        
     }
     return self;
 }
@@ -49,10 +84,10 @@
 - (JSValue*) create: (NSString*) title type: (NSString*) type
 {
     NSMenu* newMenu = [[NSMenu alloc] initWithTitle:title];
-    Menu* menu = [[Menu alloc] initWithMenu:newMenu forContext: [JSContext currentContext]];
-    menu.type = type;
+    Menu* theMenu = [[Menu alloc] initWithMenu:newMenu forContext: [JSContext currentContext]];
+    theMenu.type = type;
     
-    return [JSValue valueWithObject:menu inContext:[JSContext currentContext]];
+    return [JSValue valueWithObject:theMenu inContext:[JSContext currentContext]];
 }
 
 - (JSValue*) addItem: (NSDictionary*) props callback: (JSValue*) aCallback
@@ -85,11 +120,12 @@
     [item setKeyEquivalentModifierMask:modifiers];
     
     if(!menu.supermenu && ![_type isEqualToString:@"statusbar"]) {
-        NSMenu *s = [[NSMenu alloc] initWithTitle:title];
+        NSMenu *s = [[NSMenu alloc] initWithTitle: title];
+        
         [item setSubmenu:s];
     }
     
-    MenuItem* menuItem = [[MenuItem alloc] initWithContext:self.context andMenuItem:item];
+    MenuItem* menuItem = [MenuItem menuItemWithContext:self.context andMenu:item];
    
    // if (cb != nil && ![cb isKindOfClass: [NSNull class]]) {
     if(aCallback != nil && ![aCallback isKindOfClass: [NSNull class]]) {
@@ -98,7 +134,7 @@
     
     }
     
-    return [JSValue valueWithObject:menuItem inContext:[JSContext currentContext] ];
+    return [JSValue valueWithObject:menuItem inContext:self.context ];
     
 }
 
@@ -118,7 +154,7 @@
     NSMenuItem *item = nil;
     if ([key isKindOfClass:[NSNumber class]])
     {
-        if([key intValue] > [[menu itemArray] count]) {
+        if([key intValue] >= [[menu itemArray] count]) {
             return nil;
         }
         
@@ -137,8 +173,9 @@
     if (!item)
         return nil;
     
-    MenuItem *mi = [[MenuItem alloc] initWithContext:[JSContext currentContext] andMenuItem:item];
-    return [JSValue valueWithObject: mi inContext: [JSContext currentContext]];
+    MenuItem *mi = [MenuItem menuItemWithContext:self.context andMenu:item]; //[[MenuItem alloc] initWithContext:[JSContext currentContext] andMenuItem:item];
+    
+    return [JSValue valueWithObject: mi inContext: self.context];
 }
 
 
@@ -200,5 +237,10 @@
     return menu;
 }
 
+- (void) dealloc
+{
+    NSLog(@"Menu Deallocated");
+    menu.representedObject = nil;
+}
 
 @end

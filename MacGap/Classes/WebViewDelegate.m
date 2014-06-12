@@ -181,7 +181,7 @@
     }
     
     if(menu == nil) {
-        menu = [[Menu alloc] initWithMenu:mainMenu forContext:context];
+        menu = [Menu menuWithContext:context andMenu:mainMenu ];
     }
     
     context[kWebScriptNamespace] = app;

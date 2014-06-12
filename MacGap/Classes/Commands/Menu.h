@@ -31,9 +31,9 @@ JSExportAs(getItem, - (JSValue*) itemForKey:(id)key);
 }
 @property (strong) NSMenu* menu;
 @property (readonly) NSString* type;
-@property (readonly) NSArray* menuItems;
 @property (strong) JSContext* context;
 
++ (Menu*) menuWithContext: (JSContext*) context andMenu: (NSMenu*) aMenu;
 - (Menu*) initWithMenu: (NSMenu*) aMenu forContext: (JSContext*) context;
 - (Menu*) initWithMenu: (NSMenu*) aMenu andType: (NSString*) type forContext: (JSContext*) context;
 - (NSMenu*)removeItem:(id)key;

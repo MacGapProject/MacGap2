@@ -38,6 +38,21 @@
 
 }
 
+- (id) initWithContext:(JSContext*)context {
+    self = [super init];
+    if (!self)
+        return nil;
+    jsContext = [context JSGlobalContextRef];
+    JSGlobalContextRetain((JSGlobalContextRef)jsContext);
+    return self;
+}
+
+- (void)dealloc
+{
+    if (jsContext)
+        JSGlobalContextRelease((JSGlobalContextRef)jsContext);
+}
+
 - (void) initializePlugin {}
 
 @end
