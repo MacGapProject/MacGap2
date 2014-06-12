@@ -118,6 +118,10 @@
     NSMenuItem *item = nil;
     if ([key isKindOfClass:[NSNumber class]])
     {
+        if([key intValue] > [[menu itemArray] count]) {
+            return nil;
+        }
+        
         item = [menu itemAtIndex:[key intValue]];
     }
     else if ([key isKindOfClass:[NSString class]])

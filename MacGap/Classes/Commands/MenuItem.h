@@ -16,6 +16,7 @@
 - (void) setLabel:(NSString*)label;
 JSExportAs(addSubmenu, - (JSValue*)addSubmenu: (NSString*) aTitle);
 @property (readonly) JSValue* submenu;
+@property (readwrite) BOOL enabled;
 @property (strong) JSManagedValue* callback;
 @end
 

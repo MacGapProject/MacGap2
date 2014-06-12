@@ -22,7 +22,7 @@
 
 @implementation MenuItem
 
-@synthesize callback, submenu;
+@synthesize callback, submenu, enabled;
 
 - (id) initWithContext:(JSContext*)aContext andMenuItem:(NSMenuItem*)anItem
 {
@@ -57,6 +57,11 @@
     [self.context.virtualMachine addManagedReference:callback withOwner:self];
     [item setAction:@selector(fireCallback)];
     [item setTarget:self];
+}
+- (void) setEnabled:(BOOL) val
+{
+    enabled = val;
+    [item setEnabled:enabled];
 }
 
 - (JSValue*)addSubmenu: (NSString*) aTitle
