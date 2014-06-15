@@ -19,6 +19,9 @@
 - (void) bounce;
 
 JSExportAs(setUserAgent, - (void) setCustomUserAgent:(NSString *)userAgentString);
+JSExportAs(openURL, - (void) openURL:(NSString*)url);
+JSExportAs(launch, - (void) launch:(NSString *)name);
+
 @property (weak) NSNumber* idleTime;
 @property (readonly) NSString* applicationPath;
 @property (readonly) NSString* resourcePath;
