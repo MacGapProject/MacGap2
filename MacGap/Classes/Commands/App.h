@@ -17,6 +17,7 @@
 - (void) unhide;
 - (void) beep;
 - (void) bounce;
+- (void) notify:(NSDictionary*)aNotification;
 
 JSExportAs(setUserAgent, - (void) setCustomUserAgent:(NSString *)userAgentString);
 @property (weak) NSNumber* idleTime;

@@ -28,7 +28,9 @@
         [notification setTitle:[aNotification valueForKey:@"title"]];
         [notification setInformativeText:[aNotification valueForKey:@"content"]];
         [notification setSubtitle:[aNotification valueForKey:@"subtitle"]];
-        [notification setSoundName: NSUserNotificationDefaultSoundName];
+        if([[aNotification valueForKey:@"sound"] boolValue] == YES || ![aNotification valueForKey:@"sound"] ) {
+            [notification setSoundName: NSUserNotificationDefaultSoundName];
+        }
         [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
 
     }
