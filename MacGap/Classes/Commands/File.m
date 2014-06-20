@@ -55,6 +55,11 @@
     
 }
 
+
+- (BOOL) fileExistsAtPath:(NSString*)filePath {
+    return [[NSFileManager defaultManager] fileExistsAtPath:filePath];
+}
+
 - (JSValue*) readFile:(NSString*)filePath ofType: (NSString*) type
 {
     
