@@ -16,7 +16,7 @@
 
 @implementation Task
 
-@synthesize task, callback, isRunning,waitUntilExit,environment, arguments;
+@synthesize task, callback, isRunning,waitUntilExit,environment, arguments, pipeOutput;
 
 - (id) initWithWindowController:(WindowController *)aWindowController
 {
@@ -30,6 +30,7 @@
         self.arguments = nil;
         self.environment = nil;
         self.callback = nil;
+        self.pipeOutput = NO;
     }
     
     return self;
@@ -57,18 +58,46 @@
   
     NSTask *aTask = notification.object;
     int status = [aTask terminationStatus];
-    NSDictionary *result = @{ @"status" : [NSNumber numberWithInt:status], @"stdOut" : aTask.standardOutput, @"stdIn" : aTask.standardInput, @"stdErr" : aTask.standardError };
+    NSDictionary *result = nil;
+  
+    
+    if(pipeOutput == YES) {
+     
+        NSData *data;
+        data = [self.outFile readDataToEndOfFile];
+        NSString *string;
+        string = [[NSString alloc] initWithData: data
+                                       encoding: NSUTF8StringEncoding];
+        result = @{ @"status" : [NSNumber numberWithInt:status], @"stdOut" : string, @"stdIn" : aTask.standardInput, @"stdErr" : aTask.standardError };
+    } else {
+        result = @{ @"status" : [NSNumber numberWithInt:status], @"stdOut" : aTask.standardOutput, @"stdIn" : aTask.standardInput, @"stdErr" : aTask.standardError };
+     
+    }
     
     dispatch_sync(dispatch_get_main_queue(), ^{
            [callback.value callWithArguments:@[result]];
+            task = nil;
        });
    
 }
 
-- (void) setArguments:(NSArray *)arguments
+- (void) setArguments:(NSArray *)args
 {
     if(task) {
-       task.arguments = arguments;
+       task.arguments = args;
+    }
+}
+
+- (void) setPipeOutput:(BOOL)shouldPipe
+{
+   
+    if(task) {
+        if(shouldPipe == YES) {
+            self.outputPipe = [NSPipe pipe];
+            [task setStandardOutput: self.outputPipe];
+            self.outFile = [self.outputPipe fileHandleForReading];
+            pipeOutput = shouldPipe;
+        }
     }
 }
 

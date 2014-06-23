@@ -16,6 +16,7 @@ JSExportAs(create, - (JSValue*) createTask: (NSString*) path withCallback: (JSVa
 
 @property (readonly) BOOL isRunning;
 @property (readwrite) BOOL waitUntilExit;
+@property (readwrite) BOOL pipeOutput;
 @property (readwrite) NSArray* arguments;
 @property (readwrite) NSDictionary* environment;
 @property (strong) JSManagedValue* callback;
@@ -24,5 +25,6 @@ JSExportAs(create, - (JSValue*) createTask: (NSString*) path withCallback: (JSVa
 
 @interface Task : Command <TaskExports>
 @property (strong) NSTask* task;
-@property (nonatomic, strong) NSPipe *outputPipe;
+@property (strong) NSPipe *outputPipe;
+@property (strong) NSFileHandle *outFile;
 @end

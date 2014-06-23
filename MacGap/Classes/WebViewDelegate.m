@@ -13,7 +13,7 @@
 
 @implementation WebViewDelegate
 
-@synthesize windowController;
+@synthesize windowController, app, menu, window;
 
 - (id) initWithMenu:(NSMenu*)aMenu
 {
@@ -197,5 +197,9 @@
     }
 }
 
+- (void)webView:(WebView *)sender didFinishLoadForFrame:(WebFrame *)frame
+{
+    [Event triggerEvent:@"MacGap.load.complete" forWebView:sender];
+}
 
 @end

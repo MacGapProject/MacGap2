@@ -19,7 +19,7 @@
 @property (nonatomic, readwrite, assign) BOOL loadFromString;
 @property (readwrite, assign) BOOL initialized;
 
--(void) notificationCenter;
+
 -(void) setWindowParams;
 
 @end
@@ -71,7 +71,7 @@
 
 -(id) initWithRequest: (NSURLRequest *)request{
     self = [super initWithWindowNibName:@"MainWindow"];
-    [self notificationCenter];
+  
     [[self.webView mainFrame] loadRequest:request];
     
     return self;

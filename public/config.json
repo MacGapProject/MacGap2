@@ -7,13 +7,12 @@
                 "Dock":"Dock",
                 "Dialog":"Dialog",
                 "Fonts" : "Fonts",
-                "Notify" : "Notify",
                 "Clipboard":"Clipboard",
                 "StatusItem":"StatusItem",
                 "Task" : "Task",
                 "Sound" : "Sound",
                 "Defaults" : "Defaults",
-        "File" : "File"
+                "File" : "File"
                  },
     "window" : {
         "title" : "MacGap",
