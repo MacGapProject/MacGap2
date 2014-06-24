@@ -78,6 +78,14 @@
     dispatch_sync(dispatch_get_main_queue(), ^{
            [callback.value callWithArguments:@[result]];
             task = nil;
+            self.isRunning = NO;
+            self.launched = NO;
+            self.arguments = nil;
+            self.environment = nil;
+            self.callback = nil;
+            self.outFile = nil;
+            self.outputPipe = nil;
+            self.pipeOutput = NO;
        });
    
 }
