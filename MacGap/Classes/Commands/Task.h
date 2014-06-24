@@ -19,6 +19,7 @@ JSExportAs(create, - (JSValue*) createTask: (NSString*) path withCallback: (JSVa
 @property (readwrite) BOOL pipeOutput;
 @property (readwrite) NSArray* arguments;
 @property (readwrite) NSDictionary* environment;
+@property (readwrite) NSString* currentDirectoryPath;
 @property (strong) JSManagedValue* callback;
 
 @end

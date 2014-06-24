@@ -16,7 +16,7 @@
 
 @implementation Task
 
-@synthesize task, callback, isRunning,waitUntilExit,environment, arguments, pipeOutput;
+@synthesize task, callback, isRunning,waitUntilExit,environment, arguments, pipeOutput, currentDirectoryPath;
 
 - (id) initWithWindowController:(WindowController *)aWindowController
 {
@@ -31,6 +31,7 @@
         self.environment = nil;
         self.callback = nil;
         self.pipeOutput = NO;
+        
     }
     
     return self;
@@ -86,6 +87,15 @@
     if(task) {
        task.arguments = args;
     }
+}
+
+- (void) setCurrentDirectoryPath:(NSString *)path
+{
+    
+    if(task) {
+        task.currentDirectoryPath = path;
+    }
+    
 }
 
 - (void) setPipeOutput:(BOOL)shouldPipe
