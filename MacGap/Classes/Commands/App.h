@@ -20,6 +20,8 @@
 - (void) notify:(NSDictionary*)aNotification;
 
 JSExportAs(setUserAgent, - (void) setCustomUserAgent:(NSString *)userAgentString);
+- (void) openURL:(NSString*)url;
+- (void) launch:(NSString *)name;
 @property (weak) NSNumber* idleTime;
 @property (readonly) NSString* applicationPath;
 @property (readonly) NSString* resourcePath;

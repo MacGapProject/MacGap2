@@ -85,7 +85,7 @@
     [self.webView setCustomUserAgent: userAgentString];
 }
 
-- (void) open:(NSString*)url {
+- (void) openURL:(NSString*)url {
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:url]];
 }
 
