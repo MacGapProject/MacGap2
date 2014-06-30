@@ -7,16 +7,35 @@
 //
 
 #import "Sound.h"
+#import <WebKit/WebKit.h>
+#import "WindowController.h"
+
 @interface Sound ()
+{
+    NSMutableDictionary * callbacks;
+}
 @property (readwrite) JSContext* context;
 @end
 
 @implementation Sound
 @synthesize cb, context;
 
+- (id) initWithWindowController:(WindowController *)aWindowController
+{
+    self = [super init];
+    if(self) {
+        self.windowController = aWindowController;
+        self.webView = aWindowController.webView;
+    }
+    callbacks = [NSMutableDictionary new];
+    return self;
+    
+}
+
 - (void) playSound:(NSSound*)sound onComplete:(JSValue*)callback {
     if (callback && ![callback isKindOfClass:[NSNull class]]) {
-        cb = callback;
+        //cb = callback;
+        [callbacks setObject:callback forKey: [sound name]];
         context = [JSContext currentContext];
         [sound setDelegate:self];
     }
@@ -37,6 +56,7 @@
 }
 
 - (void)sound:(NSSound *)aSound didFinishPlaying:(BOOL)finishedPlaying {
+    cb = [callbacks valueForKey:[aSound name]];
     [cb callWithArguments:@[aSound.name]];
     cb = nil;
 }

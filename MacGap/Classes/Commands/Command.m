@@ -7,8 +7,8 @@
 //
 
 #import "Command.h"
-#import "WindowController.h"
 #import <WebKit/WebKit.h>
+#import "WindowController.h"
 
 @implementation Command
 @synthesize webView, windowController;

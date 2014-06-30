@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import <JavaScriptCore/JavaScriptCore.h>
+
+
 @class WindowController, WebView;
 
 @interface Command : NSObject
