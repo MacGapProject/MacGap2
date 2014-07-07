@@ -12,10 +12,11 @@
 
 @interface StatusItem ()
 @property (strong) JSValue* callback;
+@property (strong) NSNumber* titleFontSize;
 @end
 
 @implementation StatusItem
-@synthesize menu;
+@synthesize menu, title;
 - (id) initWithWindowController:(WindowController *)aWindowController
 {
     self = [super init];
@@ -29,7 +30,8 @@
 
 - (void) createItem: (NSDictionary*) props
 {
-    
+    NSString *aTitle = [props valueForKey:@"title"];
+    NSNumber *titleFontSize = [props valueForKey:@"titleFontSize"];
     NSString *image = [props valueForKey:@"image"];
     NSString *alternateImage = [props valueForKey:@"alternateImage"];
     JSValue * cb = [props valueForKey: @"onClick"];
@@ -40,6 +42,9 @@
     if(cb)
         _callback = cb;
     
+    if(titleFontSize)
+        _titleFontSize = titleFontSize;
+
     if(image)
         imgfileUrl  = [NSURL fileURLWithPath:pathForResource(image)];
     
@@ -47,20 +52,31 @@
         altImgfileUrl  = [NSURL fileURLWithPath:pathForResource(alternateImage)];
     
     _statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
-    _statusItem.title = @"";
+    
+    if(aTitle)
+        [self setTitle:aTitle];
+
     _statusItem.image = [[NSImage alloc] initWithContentsOfURL:imgfileUrl];
     _statusItem.alternateImage = [[NSImage alloc] initWithContentsOfURL:altImgfileUrl];
     _statusItem.action = @selector(itemClicked:);
     _statusItem.target = self;
     _statusItem.highlightMode = YES;
-    
-    
 }
+
 - (void) setMenu:(JSValue*)aMenu
 {
     menu = aMenu;
     Menu* theMenu = [aMenu toObject];
     _statusItem.menu = theMenu.menu;
+}
+
+- (void) setTitle:(NSString*)aTitle
+{
+    NSMutableAttributedString *attributedTitle=[[NSMutableAttributedString alloc] initWithString:aTitle];
+    NSInteger _stringLength=[aTitle length];
+    NSFont *font=[NSFont menuBarFontOfSize:[_titleFontSize floatValue]];
+    [attributedTitle addAttribute:NSFontAttributeName value:font range:NSMakeRange(0, _stringLength)];
+    _statusItem.attributedTitle = attributedTitle;
 }
 
 - (void)  itemClicked:(id)sender
