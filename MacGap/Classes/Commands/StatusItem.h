@@ -10,6 +10,7 @@
 @protocol StatusItemExports <JSExport>
 JSExportAs(create, - (void) createItem: (NSDictionary*) props);
 @property (readwrite) JSValue *menu;
+@property (readwrite) NSString *title;
 @end
 
 @interface StatusItem : Command <StatusItemExports>
