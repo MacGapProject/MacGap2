@@ -83,7 +83,6 @@
             self.arguments = nil;
             self.environment = nil;
             self.callback = nil;
-            self.onError = nil;
             self.outFile = nil;
             self.outputPipe = nil;
             self.pipeOutput = NO;
