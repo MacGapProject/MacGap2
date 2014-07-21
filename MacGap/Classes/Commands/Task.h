@@ -21,7 +21,6 @@ JSExportAs(create, - (JSValue*) createTask: (NSString*) path withCallback: (JSVa
 @property (readwrite) NSDictionary* environment;
 @property (readwrite) NSString* currentDirectoryPath;
 @property (strong) JSManagedValue* callback;
-@property (strong) JSManagedValue* onError;
 @end
 
 @interface Task : Command <TaskExports>
