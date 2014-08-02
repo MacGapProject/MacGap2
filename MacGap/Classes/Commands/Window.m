@@ -59,13 +59,13 @@
     NSRect frame = [self.webView window].frame;
     return frame.origin.y;
 }
-//
-//- (void) open:(NSDictionary *)properties
-//{
-//    self.windowController = [[WindowController alloc] initWithURL:[properties valueForKey:@"url"]];
-//    [self.windowController showWindow: [NSApplication sharedApplication].delegate];
-//    [self.windowController.window makeKeyWindow];
-//}
+
+- (void) open:(NSDictionary *)properties
+{
+    self.windowController = [[WindowController alloc] initWithURL:[properties valueForKey:@"url"]];
+    [self.windowController showWindow: [NSApplication sharedApplication].delegate];
+    [self.windowController.window makeKeyWindow];
+}
 
 - (void) title: (NSString*) title
 {
