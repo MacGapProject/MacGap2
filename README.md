@@ -1,3 +1,5 @@
+[![Gitter chat](https://badges.gitter.im/MacGapProject/MacGap2.png)](https://gitter.im/MacGapProject/MacGap2)
+
 # Welcome to MacGap 2.
 
 For usage notes and API documentation, visit http://docs.macgap.com.
