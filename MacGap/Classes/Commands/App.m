@@ -17,7 +17,7 @@
 @property (readwrite) NSString* homePath;
 @property (readwrite) NSString* tempPath;
 @property (readwrite) NSArray* droppedFiles;
-
+@property (readwrite) NSMutableArray* notifications;
 @end
 
 @implementation App
@@ -38,6 +38,7 @@
         self.homePath = NSHomeDirectory();
         self.tempPath = NSTemporaryDirectory();
         self.droppedFiles = nil;
+        self.notifications = [NSMutableArray arrayWithCapacity: 2];
         
         [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver: self
                                                                selector: @selector(receiveSleepNotification:)
@@ -117,7 +118,8 @@
 
 - (void) notify:(NSDictionary*)aNotification {
     NSString* type = [aNotification valueForKey:@"type"];
-    
+    NSString* uid = [aNotification valueForKey:@"id"];
+
     if([type isEqualToString:@"sheet"]) {
         NSAlert *alert = [[NSAlert alloc] init];
         [alert setMessageText:[aNotification valueForKey:@"title"]];
@@ -130,18 +132,41 @@
         
     } else {
         NSUserNotification *notification = [[NSUserNotification alloc] init];
+        
+        if(!uid) {
+            uid =[[NSUUID UUID] UUIDString];
+            
+        }
+        
         [notification setTitle:[aNotification valueForKey:@"title"]];
         [notification setInformativeText:[aNotification valueForKey:@"content"]];
         [notification setSubtitle:[aNotification valueForKey:@"subtitle"]];
+        [notification setUserInfo:@{ @"id" : uid }];
+        
         if([[aNotification valueForKey:@"sound"] boolValue] == YES || ![aNotification valueForKey:@"sound"] ) {
             [notification setSoundName: NSUserNotificationDefaultSoundName];
         }
         [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
         
+        [self.notifications addObject:@{ @"id" : uid, @"title" : [aNotification valueForKey: @"title"], @"sentOn" :[NSDate date] }];
+        
     }
 }
 
-
+- (void) closeNotification:(NSString*)notificationId {
+    NSUserNotificationCenter *center = [NSUserNotificationCenter defaultUserNotificationCenter];
+    for(NSUserNotification * deliveredNote in center.deliveredNotifications) {
+        if ([notificationId isEqualToString:@"*"] || [deliveredNote.userInfo[@"id"] isEqualToString:notificationId]) {
+            [center removeDeliveredNotification: deliveredNote];
+             //NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id==%@", notificationId];
+             NSUInteger noteIdx = [self.notifications indexOfObjectPassingTest: ^BOOL(NSDictionary* obj, NSUInteger idx, BOOL *stop) {
+                                        return [[obj valueForKey:@"id"] isEqualToString:notificationId];
+                                  }];
+            if (noteIdx != NSNotFound)
+                [self.notifications removeObjectAtIndex:noteIdx];
+        }
+    }
+}
 
 /*
  To get the elapsed time since the previous input event—keyboard, mouse, or tablet—specify kCGAnyInputEventType.

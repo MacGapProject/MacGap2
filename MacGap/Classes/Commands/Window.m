@@ -62,9 +62,13 @@
 
 - (void) open:(NSDictionary *)properties
 {
-    self.windowController = [[WindowController alloc] initWithURL:[properties valueForKey:@"url"]];
-    [self.windowController showWindow: [NSApplication sharedApplication].delegate];
-    [self.windowController.window makeKeyWindow];
+    WindowController* newWindow = [[WindowController alloc] initWithURL:[properties valueForKey:@"url"]];
+    [newWindow showWindow: [NSApplication sharedApplication].delegate];
+    [newWindow.window makeKeyWindow];
+
+   // self.windowController = [[WindowController alloc] initWithURL:[properties valueForKey:@"url"]];
+   // [self.windowController showWindow: [NSApplication sharedApplication].delegate];
+   // [self.windowController.window makeKeyWindow];
 }
 
 - (void) title: (NSString*) title

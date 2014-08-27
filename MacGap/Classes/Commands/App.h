@@ -18,6 +18,7 @@
 - (void) beep;
 - (void) bounce;
 - (void) notify:(NSDictionary*)aNotification;
+- (void) closeNotification:(NSString*)notificationId;
 
 JSExportAs(setUserAgent, - (void) setCustomUserAgent:(NSString *)userAgentString);
 - (void) openURL:(NSString*)url;
@@ -30,6 +31,7 @@ JSExportAs(setUserAgent, - (void) setCustomUserAgent:(NSString *)userAgentString
 @property (readonly) NSString* homePath;
 @property (readonly) NSString* tempPath;
 @property (readonly) NSArray* droppedFiles;
+@property (readonly) NSMutableArray* notifications;
 @end
 
 @interface App : Command <AppExports>
