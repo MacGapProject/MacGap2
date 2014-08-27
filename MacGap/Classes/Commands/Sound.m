@@ -35,7 +35,7 @@
 - (void) playSound:(NSSound*)sound onComplete:(JSValue*)callback {
     if (callback && ![callback isKindOfClass:[NSNull class]]) {
         //cb = callback;
-        [callbacks setObject:callback forKey: [sound name]];
+        [callbacks setObject:callback forKey:[sound name]];
         context = [JSContext currentContext];
         [sound setDelegate:self];
     }
@@ -47,6 +47,11 @@
 	DebugNSLog(@"Sound file:%@", [fileUrl description]);
 	
 	NSSound* sound = [[NSSound alloc] initWithContentsOfURL:fileUrl byReference:YES];
+    if(!sound.name) {
+        sound.name = fileUrl.lastPathComponent;
+    }
+    
+    NSLog(@"Callback: %@, Sound: %@, Name: %@", callback, sound, [sound name]);
     [self playSound:sound onComplete:callback];
 }
 
