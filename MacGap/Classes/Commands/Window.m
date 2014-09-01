@@ -65,7 +65,7 @@
     WindowController* newWindow = [[WindowController alloc] initWithURL:[properties valueForKey:@"url"]];
     [newWindow showWindow: [NSApplication sharedApplication].delegate];
     [newWindow.window makeKeyWindow];
-
+    [newWindow.window setReleasedWhenClosed:YES];
    // self.windowController = [[WindowController alloc] initWithURL:[properties valueForKey:@"url"]];
    // [self.windowController showWindow: [NSApplication sharedApplication].delegate];
    // [self.windowController.window makeKeyWindow];
@@ -144,7 +144,20 @@
                                              selector:@selector(windowExitFullscreen:)
                                                  name:NSWindowDidExitFullScreenNotification
                                                object: self.windowController.window];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(windowClosed:)
+                                                 name:NSWindowWillCloseNotification
+                                               object: self.windowController.window];
 
+}
+
+- (void) windowClosed: (NSNotification*)notification
+{
+
+    self.webView = nil;
+    self.windowController = nil;
+    
 }
 
 - (void) windowResized:(NSNotification*)notification
