@@ -15,7 +15,7 @@
 @interface WindowController : NSWindowController
 {
     IBOutlet WebView* webView;
-    IBOutlet NSWindow* window;
+    IBOutlet BordernessWindow* window;
     WebViewDelegate* webViewDelegate;
     JSContext* jsContext;
 }

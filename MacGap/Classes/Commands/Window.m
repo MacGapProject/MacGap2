@@ -49,7 +49,6 @@
     return self;
 }
 
-
 - (CGFloat) getX {
     NSRect frame = [self.webView window].frame;
     return frame.origin.x;
@@ -79,6 +78,23 @@
 
 - (void) minimize {
     [self.windowController.window miniaturize:[NSApp mainWindow]];
+}
+
+- (void) toggleMinimizeButton {
+	BOOL already_hidden = [[self.windowController.window standardWindowButton:NSWindowMiniaturizeButton] isHidden];
+    [[self.windowController.window standardWindowButton:NSWindowMiniaturizeButton] setHidden:!already_hidden];
+}
+
+- (void) toggleMaximizeButton {
+	BOOL already_hidden = [[self.windowController.window standardWindowButton:NSWindowZoomButton] isHidden];
+    [[self.windowController.window standardWindowButton:NSWindowZoomButton] setHidden:!already_hidden];
+}
+
+- (void) toggleTitlebar {
+	NSUInteger style_now = [self.windowController.window styleMask];
+	NSUInteger defaultWindowMask = NSTitledWindowMask | NSClosableWindowMask | NSMiniaturizableWindowMask | NSResizableWindowMask;
+    [self.windowController.window setStyleMask:
+	 (style_now == NSBorderlessWindowMask ? defaultWindowMask : NSBorderlessWindowMask)];
 }
 
 - (void) toggleFullscreen {

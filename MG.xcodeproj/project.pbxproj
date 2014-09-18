@@ -40,6 +40,7 @@
 		22B1CF431937734B00D2C294 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B1CF281937734B00D2C294 /* main.m */; };
 		22B1CF441937734B00D2C294 /* MG-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 22B1CF291937734B00D2C294 /* MG-Info.plist */; };
 		22BE36ED193B7F8800D8199F /* Defaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BE36EC193B7F8800D8199F /* Defaults.m */; };
+		44C53DF019CACD1400F0E247 /* BordernessWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 44C53DEF19CACD1400F0E247 /* BordernessWindow.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -106,6 +107,8 @@
 		22B1CF2A1937734B00D2C294 /* MG-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MG-Prefix.pch"; sourceTree = "<group>"; };
 		22BE36EB193B7F8800D8199F /* Defaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Defaults.h; sourceTree = "<group>"; };
 		22BE36EC193B7F8800D8199F /* Defaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Defaults.m; sourceTree = "<group>"; };
+		44C53DEE19CACD1400F0E247 /* BordernessWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BordernessWindow.h; sourceTree = "<group>"; };
+		44C53DEF19CACD1400F0E247 /* BordernessWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BordernessWindow.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -237,6 +240,8 @@
 				22BE36EC193B7F8800D8199F /* Defaults.m */,
 				22A676E51944B140002F81FB /* File.h */,
 				22A676E61944B140002F81FB /* File.m */,
+				44C53DEE19CACD1400F0E247 /* BordernessWindow.h */,
+				44C53DEF19CACD1400F0E247 /* BordernessWindow.m */,
 			);
 			path = Commands;
 			sourceTree = "<group>";
@@ -335,6 +340,7 @@
 				22B1CF341937734B00D2C294 /* Dock.m in Sources */,
 				22B1CF2E1937734B00D2C294 /* JSON.m in Sources */,
 				22BE36ED193B7F8800D8199F /* Defaults.m in Sources */,
+				44C53DF019CACD1400F0E247 /* BordernessWindow.m in Sources */,
 				22B1CF381937734B00D2C294 /* MenuItem.m in Sources */,
 				22B1CF301937734B00D2C294 /* App.m in Sources */,
 				22B1CF371937734B00D2C294 /* Menu.m in Sources */,

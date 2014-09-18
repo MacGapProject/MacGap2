@@ -22,6 +22,7 @@
 #import "Fonts.h"
 #import "StatusItem.h"
 #import "Event.h"
+#import "BordernessWindow.h"
 
 
 #import "NSData+Base64.h"
