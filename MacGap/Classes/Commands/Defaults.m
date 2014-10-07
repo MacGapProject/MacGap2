@@ -39,6 +39,10 @@ typedef void (^SetType)();
     return self;
     
 }
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver: self];
+}
 
 - (JSValue*) defaults
 {

@@ -70,6 +70,8 @@
             if(fileExists) {
                 NSString* val = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:NULL];
                 return [JSValue valueWithObject:val inContext:[JSContext currentContext]];
+            } else {
+                DebugNSLog(@"File does not exist at the path provided.");
             }
             
         } else if([type isEqualToString:@"json"]) {
@@ -77,6 +79,8 @@
             if(fileExists) {
                 NSDictionary* val = [[NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:NULL] JSONObject];
                 return [JSValue valueWithObject:val inContext:[JSContext currentContext]];
+            } else {
+                DebugNSLog(@"File does not exist at the path provided.");
             }
         } else {
             //TODO
@@ -86,6 +90,9 @@
 //            }
         }
     } else {
+     
+        DebugNSLog(@"Incorrect File Type Specified. Acceptable types are: string, json or image.");
+        
         return nil;
     }
     return nil;
