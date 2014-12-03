@@ -159,7 +159,7 @@
     }
     
     [[self window] setFrame:frame display: YES];
-    
+
   
 }
 

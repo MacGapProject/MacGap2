@@ -14,7 +14,7 @@
 		<string>https://github.com/rawcreative/MacGap2.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>MG.xcodeproj/project.xcworkspace</string>
+	<string>MG.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>6619CA971E46A2C1689FBEA6301DFE23F3ECA032</key>

@@ -17,12 +17,13 @@
 @property (readwrite) NSString* homePath;
 @property (readwrite) NSString* tempPath;
 @property (readwrite) NSArray* droppedFiles;
+@property (readwrite) NSNumber* idleTime;
 @property (readwrite) NSMutableArray* notifications;
 @end
 
 @implementation App
 
-@synthesize webView, applicationPath, resourcePath, libraryPath, homePath,tempPath;
+@synthesize webView, applicationPath, resourcePath, libraryPath, homePath, tempPath, idleTime;
 
 - (id) initWithWebView:(WebView *) view{
     self = [super init];
@@ -171,7 +172,7 @@
 /*
  To get the elapsed time since the previous input event—keyboard, mouse, or tablet—specify kCGAnyInputEventType.
  */
-- (NSNumber*)systemIdleTime {
+- (NSNumber*) idleTime {
     CFTimeInterval timeSinceLastEvent = CGEventSourceSecondsSinceLastEventType(kCGEventSourceStateHIDSystemState, kCGAnyInputEventType);
     
     return [NSNumber numberWithDouble:timeSinceLastEvent];
