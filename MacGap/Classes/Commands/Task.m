@@ -169,4 +169,10 @@
     }
 }
 
+- (void) dealloc
+{
+    if(self.isRunning)
+        [task terminate];
+}
+
 @end

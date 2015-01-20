@@ -17,7 +17,6 @@
 @property (readwrite) NSString* homePath;
 @property (readwrite) NSString* tempPath;
 @property (readwrite) NSArray* droppedFiles;
-@property (readwrite) NSNumber* idleTime;
 @property (readwrite) NSMutableArray* notifications;
 @end
 
