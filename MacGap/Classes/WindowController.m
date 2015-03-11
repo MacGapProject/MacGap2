@@ -158,6 +158,15 @@
         [[self window] center];
     }
     
+    if([params objectForKey:@"opaque"]) {
+        [[self window] setOpaque: [[params objectForKey:@"opaque"] boolValue]];
+    }
+    
+    if([params objectForKey:@"alpha"]) {
+        NSColor *backgroundColor = [NSColor colorWithDeviceRed:0.0 green:0.0 blue:0.0 alpha:[[params objectForKey:@"alpha"] doubleValue]];
+        [[self window] setBackgroundColor: backgroundColor];
+    }
+    
     [[self window] setFrame:frame display: YES];
 
   
