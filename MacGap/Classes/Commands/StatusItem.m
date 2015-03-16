@@ -28,14 +28,13 @@
     return self;
 }
 
-- (void) createItem: (NSDictionary*) props
+- (void) createItem: (NSDictionary*) props callback: (JSValue*) cb
 {
     NSString *aTitle = [props valueForKey:@"title"];
     NSNumber *titleFontSize = [props valueForKey:@"titleFontSize"];
     NSString *image = [props valueForKey:@"image"];
     NSString *alternateImage = [props valueForKey:@"alternateImage"];
-    JSValue * cb = [props valueForKey: @"onClick"];
-    
+        
     NSURL* imgfileUrl = nil;
     NSURL* altImgfileUrl = nil;
     

@@ -8,7 +8,7 @@
 
 #import "Command.h"
 @protocol StatusItemExports <JSExport>
-JSExportAs(create, - (void) createItem: (NSDictionary*) props);
+JSExportAs(create, - (void) createItem: (NSDictionary*) props callback: (JSValue*) cb);
 @property (readwrite) JSValue *menu;
 @property (readwrite) NSString *title;
 @end
