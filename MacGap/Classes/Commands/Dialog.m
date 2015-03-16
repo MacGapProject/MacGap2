@@ -23,9 +23,12 @@
     JSValue* files = [args valueForProperty:@"files"];
     JSValue* dirs = [args valueForProperty:@"directories"];
     JSValue* cb = [args valueForProperty: @"callback"];
+    JSValue* allowedTypes = [args valueForProperty:@"allowedTypes"];
     [openDlg setCanChooseFiles: [files toBool]];
     [openDlg setCanChooseDirectories: [dirs toBool]];
     [openDlg setAllowsMultipleSelection: [mult toBool]];
+    if(allowedTypes)
+        [openDlg setAllowedFileTypes: [allowedTypes toArray]];
     [openDlg beginWithCompletionHandler:^(NSInteger result){
       
         if (result == NSFileHandlingPanelOKButton) {
