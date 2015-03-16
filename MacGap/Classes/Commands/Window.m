@@ -60,9 +60,9 @@
     return frame.origin.y;
 }
 
-- (void) open:(NSDictionary *)properties
+- (void) open:(NSString *)url
 {
-    WindowController* newWindow = [[WindowController alloc] initWithURL:[properties valueForKey:@"url"]];
+    WindowController* newWindow = [[WindowController alloc] initWithURL: url];
     [newWindow showWindow: [NSApplication sharedApplication].delegate];
     [newWindow.window makeKeyWindow];
     [newWindow.window setReleasedWhenClosed:YES];
@@ -75,7 +75,6 @@
 {
    [self.windowController.window setTitle:title];
 }
-
 
 - (void) minimize {
     [self.windowController.window miniaturize:[NSApp mainWindow]];
@@ -98,7 +97,6 @@
     frame.origin.x = [xCoord integerValue];
     frame.origin.y = [yCoord integerValue];
     [self.windowController.window setFrame:frame display:YES];
-    
 }
 
 - (void) resize: (NSNumber*) width height: (NSNumber*) height
@@ -113,6 +111,7 @@
 {
     [self.windowController.window setFrame:_oldRestoreFrame display:YES];
 }
+
 - (void) registerEvents
 {
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -149,15 +148,12 @@
                                              selector:@selector(windowClosed:)
                                                  name:NSWindowWillCloseNotification
                                                object: self.windowController.window];
-
 }
 
 - (void) windowClosed: (NSNotification*)notification
 {
-
     self.webView = nil;
     self.windowController = nil;
-    
 }
 
 - (void) windowResized:(NSNotification*)notification
@@ -174,18 +170,15 @@
    
    
     [self triggerEvent:@"resize" withArgs:sizes];
-
 }
 
 - (void) windowMinimized:(NSNotification*)notification
 {
-   
     [self triggerEvent:@"minimized"];
 }
 
 - (void) windowRestored:(NSNotification*)notification
 {
- 
     [self triggerEvent:@"restore"];
 }
 
@@ -198,7 +191,6 @@
 
 - (void) windowEnterFullscreen:(NSNotification*)notification
 {
-
     [self triggerEvent:@"enter-fullscreen"];
 }
 
@@ -220,7 +212,6 @@
 
 - (void) triggerEvent: (NSString*) event withArgs: (NSDictionary*) args
 {
-    
     [Event triggerEvent: event withArgs: args forObject:@"window" forWebView:self.webView];
 }
 
