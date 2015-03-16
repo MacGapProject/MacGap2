@@ -6,6 +6,7 @@
 //
 //
 
+#import "AppDelegate.h"
 #import "Window.h"
 #import "WindowController.h"
 #import <WebKit/WebKit.h>
@@ -69,6 +70,14 @@
    // self.windowController = [[WindowController alloc] initWithURL:[properties valueForKey:@"url"]];
    // [self.windowController showWindow: [NSApplication sharedApplication].delegate];
    // [self.windowController.window makeKeyWindow];
+}
+
+
+// Reopen the first window that was opened.
+- (void) reopenFirst
+{
+    AppDelegate *appDelegate = (AppDelegate *)[[NSApplication sharedApplication] delegate];
+    [appDelegate.windowController.window makeKeyAndOrderFront: nil];
 }
 
 - (void) title: (NSString*) title
