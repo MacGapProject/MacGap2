@@ -96,7 +96,6 @@ static char REPRESENTED_OBJECT;
     NSString* title = [props valueForKey: @"label"];
     NSString* cmds = [props valueForKey: @"keys"];
     NSNumber* index = [props valueForKey: @"index"];
-    //JSValue *cb = [props valueForKey: @"callback"];
     NSString *key = nil;
     NSMenuItem *item = nil;
 
@@ -126,13 +125,14 @@ static char REPRESENTED_OBJECT;
     }
     
     MenuItem* menuItem = [MenuItem menuItemWithContext:self.context andMenu:item];
-   
-   // if (cb != nil && ![cb isKindOfClass: [NSNull class]]) {
+
     if(aCallback != nil && ![aCallback isKindOfClass: [NSNull class]]) {
     
         [menuItem setCallback:aCallback];
     
     }
+
+    [menu setAutoenablesItems:NO]; 
     
     return [JSValue valueWithObject:menuItem inContext:self.context ];
     
