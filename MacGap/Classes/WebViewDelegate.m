@@ -33,6 +33,7 @@
     
     [openDlg setCanChooseFiles:YES];
     [openDlg setCanChooseDirectories:NO];
+    [openDlg setAllowsMultipleSelection: allowMultipleFiles];
     
     [openDlg beginWithCompletionHandler:^(NSInteger result){
         if (result == NSFileHandlingPanelOKButton) {
