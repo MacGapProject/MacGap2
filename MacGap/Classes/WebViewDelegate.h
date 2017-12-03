@@ -11,7 +11,7 @@
 
 @class WindowController, Window, Menu, App;
 
-@interface WebViewDelegate : NSObject {
+@interface WebViewDelegate : NSObject <WebFrameLoadDelegate, WebUIDelegate, WebResourceLoadDelegate, WebPolicyDelegate, WebDownloadDelegate> {
     NSMenu *mainMenu;
     Window* window;
     Menu* menu;
