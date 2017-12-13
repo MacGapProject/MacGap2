@@ -8,5 +8,6 @@ To submit an issue or ask for help, go to the GitHub issue queue at https://gith
 
 # How to use
 
+0. Document: https://macgapproject.github.io/documentation/ref/file.html
 1. Copy BrowserStackLocal to public folder
-2. App -> DMG (Pending)
+2. App -> DMG [http://kb.parallels.com/en/123895]
