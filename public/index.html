@@ -26,9 +26,95 @@
 </head>
 <body>
   
-  <script type="text/javascript" charset="utf-8">
- </script>
-  
   <h1>MacGap</h1>
+  <h2 id="AppPath"></h2>
+  <h2 id="homePath"></h2>
+  <h2 id="CommandOutput">Nakul</h2>
+  <h2 id="BinaryStatus">Not started Yet</h2>
+
+  <script type="text/javascript" charset="utf-8">
+      document.getElementById("AppPath").innerHTML = MacGap.applicationPath;
+      var binaryLocation = MacGap.homePath + "/.bstack";
+      document.getElementById("homePath").innerHTML = binaryLocation;
+      
+      function copyLocalToHome() {
+        var copyTask = MacGap.Task.create('/bin/cp', function(result) {
+          if(result.status == 0) {
+            console.log('The current user is ', result.stdOut);
+            document.getElementById("CommandOutput").innerHTML = result.stdOut;
+          } else {
+            console.log('An error occurred retrieving the current user.');
+          }
+        });
+        var path = MacGap.applicationPath + "/Contents/Resources/public/BrowserStackLocal";
+        copyTask.arguments = ["-v", path, binaryLocation];
+        copyTask.pipeOutput = true;
+        copyTask.launch();
+      }
+  
+  function createDirectory(){
+      var myTaskCreate = MacGap.Task.create('/bin/mkdir', function(result) {
+        if (result.status == 0) {
+          copyLocalToHome();
+        } else {
+          console.log(result.stdOut);
+        }
+      });
+      myTaskCreate.arguments = [binaryLocation];
+      myTaskCreate.pipeOutput = true;
+      myTaskCreate.launch();
+  }
+  
+  function createPlist() {
+      var plistTemplate = MacGap.applicationPath + "/Contents/Resources/public/plistTemplate.plist";
+      var fileDataString = MacGap.File.read(plistTemplate, "string");
+      var finalPath = MacGap.homePath + "/Library/LaunchAgents/com.browserstack.local.plist";
+      var nFileDataString = fileDataString.replace("NAME", binaryLocation + "/BrowserStackLocal");
+      MacGap.File.write(finalPath, nFileDataString, "string");
+  }
+  
+  function checkIfPlistLoaded() {
+    var myTaskCreate = MacGap.Task.create('/bin/launchctl', function(result) {
+      //if (result.status == 0) {
+      //  document.getElementById("BinaryStatus").innerHTML = "BrowserStack Local Plist Loaded";
+      //} else {
+        document.getElementById("BinaryStatus").innerHTML = result.stdOut;
+      //}
+    });
+    var finalPath = MacGap.homePath + "/Library/LaunchAgents/com.browserstack.local.plist";
+    myTaskCreate.arguments = ["list", "|", "/usr/bin/grep", "com.browserstack.local", "|", "/usr/bin/awk", "'{print \$3}'"];
+    myTaskCreate.pipeOutput = true;
+    myTaskCreate.launch();
+  }
+  
+  function loadPlist() {
+    var myTaskCreate = MacGap.Task.create('/bin/launchctl', function(result) {
+        if (result.status == 0) {
+          document.getElementById("BinaryStatus").innerHTML = "BrowserStack Local Plist Loaded";
+          checkIfPlistLoaded();
+        } else {
+          document.getElementById("BinaryStatus").innerHTML = result.stdOut;
+        }
+    });
+    var finalPath = MacGap.homePath + "/Library/LaunchAgents/com.browserstack.local.plist";
+    myTaskCreate.arguments = ["load", finalPath];
+    myTaskCreate.pipeOutput = true;
+    myTaskCreate.launch();
+  }
+  
+  function init() {
+      var tempDirExists = MacGap.File.exists(binaryLocation);
+      if (tempDirExists) {
+          copyLocalToHome();
+      } else {
+          createDirectory();
+      }
+  }
+  
+  init();
+  createPlist();
+  loadPlist();
+  </script>
+  
 </body>
 </html>
