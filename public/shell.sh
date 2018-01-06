@@ -5,7 +5,7 @@ IDENTIFIER="com.browserstack.local"
 
 mkdir $HOME/.bstack
 PWD=`pwd`
-cp $PWD/MG.app/Contents/Resources/public/BrowserStackLocal $NAME
+cp $PWD/BrowserStackLocal.app/Contents/Resources/public/BrowserStackLocal $NAME
 
 LAUNCH_DAEMON_PLIST="$HOME/Library/LaunchAgents/$IDENTIFIER.plist"
 

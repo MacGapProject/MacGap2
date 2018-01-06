@@ -1,6 +1,6 @@
 {
     "main": "public/index.html",
-    "name": "MacGap",
+    "name": "BrowserStack Local",
     "description": "",
     "version": "2.0.0",
     "plugins" : {
@@ -15,7 +15,7 @@
                 "File" : "File"
                  },
     "window" : {
-        "title" : "MacGap",
+        "title" : "BrowserStack Local",
         "width" : 900,
         "height" : 600,
         "position": "center",
