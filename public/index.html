@@ -16,17 +16,22 @@
     }
 
     h1 {
-      color: #E0E0E0;
+      color: #009CFC;
       text-align: center;
       font-family: helvetica;
       padding-bottom:0px;
       margin-bottom:0px;
     }
-  #logo, #BinaryStatus{
+  #logo, #BinaryStatus, .footer{
       text-align:center;
       width:100%;
       top: 10px;
       position:relative;
+  }
+  .footer{font-size:70%;}
+  #BinaryAlert {
+      top: 40px;
+      color: #009CFC;
   }
   </style>
   
@@ -35,7 +40,10 @@
   <div id="logo"></div>
   <h1>BrowserStack Local</h1>
   <div style="text-align:center;width:100%;text-weight:bold;">v1.0</div>
+  <br/>
   <div id="BinaryStatus">Setting it up..</div>
+  <br/><br/><br/>
+  <div id="BinaryAlert" class="footer">(If local is not working please contact <a href='mailto:support@browserstack.com'> support@browserstack.com </a>)</div>
 
   <script type="text/javascript" charset="utf-8">
     var binaryLocation = MacGap.homePath + "/.bstack";

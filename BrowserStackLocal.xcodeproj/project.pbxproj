@@ -290,6 +290,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0510;
+				TargetAttributes = {
+					2237E645192B0177001E1393 = {
+						DevelopmentTeam = CL769MBK8C;
+						ProvisioningStyle = Automatic;
+					};
+				};
 			};
 			buildConfigurationList = 2237E641192B0177001E1393 /* Build configuration list for PBXProject "BrowserStackLocal" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -470,13 +476,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = CL769MBK8C;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MacGap/BrowserStackLocal-Prefix.pch";
 				INFOPLIST_FILE = "MacGap/BrowserStackLocal-Info.plist";
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.browserstack.Local;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -485,13 +495,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = CL769MBK8C;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MacGap/BrowserStackLocal-Prefix.pch";
 				INFOPLIST_FILE = "MacGap/BrowserStackLocal-Info.plist";
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.browserstack.Local;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
