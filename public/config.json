@@ -16,8 +16,8 @@
                  },
     "window" : {
         "title" : "BrowserStack Local",
-        "width" : 900,
-        "height" : 600,
+        "width" : 400,
+        "height" : 300,
         "position": "center",
         "min_width": 400,
         "min_height": 200,

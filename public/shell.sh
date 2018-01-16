@@ -35,10 +35,10 @@ STATUS=`/bin/launchctl list | /usr/bin/grep $IDENTIFIER | /usr/bin/awk '{print $
 
 if [ "$STATUS" = "$IDENTIFIER" ]
 then
-echo "Success: LaunchDaemon loaded."
+echo "App Setup Successful, Local is Running!"
 exit 0
 else
-echo "Error: LaunchDaemon not loaded."
+echo "SomeThing Went Wrong, Please try Again"
 exit 1
 fi
 

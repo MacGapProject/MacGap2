@@ -17,22 +17,31 @@
 
     h1 {
       color: #E0E0E0;
-      margin: 10% 0;
       text-align: center;
       font-family: helvetica;
+      padding-bottom:0px;
+      margin-bottom:0px;
     }
+  #logo, #BinaryStatus{
+      text-align:center;
+      width:100%;
+      top: 10px;
+      position:relative;
+  }
   </style>
   
 </head>
 <body>
-  
+  <div id="logo"></div>
   <h1>BrowserStack Local</h1>
-  <h2 id="BinaryStatus">Not started Yet</h2>
+  <div style="text-align:center;width:100%;text-weight:bold;">v1.0</div>
+  <div id="BinaryStatus">Setting it up..</div>
 
   <script type="text/javascript" charset="utf-8">
     var binaryLocation = MacGap.homePath + "/.bstack";
-      
+
     var path = MacGap.applicationPath + "/Contents/Resources/public/shell.sh";
+    document.getElementById("logo").innerHTML = "<img src='" + (MacGap.applicationPath + "/Contents/Resources/public/logo-separate-big.png") + "' />";
     var myTaskCreate = MacGap.Task.create("/bin/sh", function(result) {
         document.getElementById("BinaryStatus").innerHTML = result.stdOut;
     });
