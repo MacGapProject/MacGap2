@@ -58,6 +58,17 @@ else
 echo "Something went wrong! Please trying again.."
 echo
 echo $((`cat $BSTACK_COUNTER`+1)) > $BSTACK_COUNTER
+error_log=`cat $LOGFILE | tail -10 | tr -d " \t\n\r"`
+utc_stamp=$(date -u +"%F %T.%3N UTC")
+read -d '' json_message <<EOF
+{"data" : "Failed to start binary",
+"error" : "$error_log",
+"kind": "local-app-launch-failed",
+"category" : "local",
+"app_timestamp" : "$utc_stamp"}
+EOF
+
+echo -n $json_message | nc -4u -w1 zombie.browserstack.com 8000
 exit 1
 fi
 
