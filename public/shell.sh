@@ -2,10 +2,11 @@
 
 NAME="$HOME/.bstack/BrowserStackLocal"
 IDENTIFIER="com.browserstack.local"
+LOGFILE="/tmp/bstack-local-app.log"
 
-mkdir $HOME/.bstack
+mkdir $HOME/.bstack 2>> $LOGFILE
 PWD=`pwd`
-cp $PWD/BrowserStackLocal.app/Contents/Resources/public/BrowserStackLocal $NAME
+cp $PWD/BrowserStackLocal.app/Contents/Resources/public/BrowserStackLocal $NAME 2>> $LOGFILE
 
 LAUNCH_DAEMON_PLIST="$HOME/Library/LaunchAgents/$IDENTIFIER.plist"
 
@@ -25,13 +26,14 @@ echo '<?xml version="1.0" encoding="UTF-8"?>
 <key>RunAtLoad</key>
 <true/>
 </dict>
-</plist>' > "$LAUNCH_DAEMON_PLIST"
+</plist>' > "$LAUNCH_DAEMON_PLIST" 2>> $LOGFILE
 
-/bin/launchctl unload "$LAUNCH_DAEMON_PLIST"
+/bin/launchctl unload "$LAUNCH_DAEMON_PLIST" 2>> $LOGFILE
 sleep 1
-/bin/launchctl load "$LAUNCH_DAEMON_PLIST"
+/bin/launchctl load "$LAUNCH_DAEMON_PLIST" 2>> $LOGFILE
 
 STATUS=`/bin/launchctl list | /usr/bin/grep $IDENTIFIER | /usr/bin/awk '{print $3}'`
+echo $STATUS >> $LOGFILE
 
 if [ "$STATUS" = "$IDENTIFIER" ]
 then
