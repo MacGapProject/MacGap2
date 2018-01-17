@@ -28,8 +28,6 @@ echo '<?xml version="1.0" encoding="UTF-8"?>
 <array>
 <string>'$NAME'</string>
 <string>--app</string>
-<string>--bs-host</string>
-<string>fu.bsstag.com</string>
 </array>
 <key>RunAtLoad</key>
 <true/>
