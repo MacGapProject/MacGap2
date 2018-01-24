@@ -8,6 +8,7 @@
 
 #import "WindowController.h"
 #import "WebViewDelegate.h"
+#import "DraggableView.h"
 #import "JSON.h"
 
 @interface WindowController ()
@@ -120,9 +121,6 @@
     [self.webView setShouldCloseWithWindow:NO];
     [self.webView setGroupName:@"MacGap"];
     self.pluginObjects = [[NSMutableDictionary alloc] initWithCapacity:20];
-    
-    
-
 }
 
 - (void) setWindowParams
@@ -167,9 +165,26 @@
         [[self window] setBackgroundColor: backgroundColor];
     }
     
+    NSDictionary* titlebarParams = [params objectForKey:@"titlebar"];
+    
+    if(![[titlebarParams objectForKey:@"titlebar"] boolValue]) {
+        self.window.titleVisibility = NSWindowTitleHidden;
+        self.window.titlebarAppearsTransparent = YES;
+        self.window.styleMask |= NSFullSizeContentViewWindowMask;
+    }
+    
+    if([[titlebarParams objectForKey:@"draggable"] boolValue]) {
+        int height = 22;
+        if([titlebarParams objectForKey:@"height"]) {
+            height = [[titlebarParams objectForKey:@"height"] doubleValue];
+        }
+        DraggableView *draggableView = [[DraggableView alloc] initWithFrame:[[self.window contentView] bounds]];
+        draggableView.frame = CGRectMake(0, self.window.contentView.bounds.size.height-height, draggableView.frame.size.width, height);
+        draggableView.autoresizingMask = 1 << 1 | 1 << 3;
+        [[self.window contentView] addSubview:draggableView];
+    }
+    
     [[self window] setFrame:frame display: YES];
-
-  
 }
 
 #pragma mark -

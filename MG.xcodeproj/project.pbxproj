@@ -40,6 +40,7 @@
 		22B1CF431937734B00D2C294 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B1CF281937734B00D2C294 /* main.m */; };
 		22B1CF441937734B00D2C294 /* MG-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 22B1CF291937734B00D2C294 /* MG-Info.plist */; };
 		22BE36ED193B7F8800D8199F /* Defaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BE36EC193B7F8800D8199F /* Defaults.m */; };
+		65EAED262018C629006617FE /* DraggableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65EAED252018C629006617FE /* DraggableView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -106,6 +107,8 @@
 		22B1CF2A1937734B00D2C294 /* MG-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MG-Prefix.pch"; sourceTree = "<group>"; };
 		22BE36EB193B7F8800D8199F /* Defaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Defaults.h; sourceTree = "<group>"; };
 		22BE36EC193B7F8800D8199F /* Defaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Defaults.m; sourceTree = "<group>"; };
+		65EAED242018C629006617FE /* DraggableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DraggableView.h; sourceTree = "<group>"; };
+		65EAED252018C629006617FE /* DraggableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DraggableView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,6 +200,8 @@
 				22B1CF1F1937734B00D2C294 /* WebViewDelegate.m */,
 				22B1CF201937734B00D2C294 /* WindowController.h */,
 				22B1CF211937734B00D2C294 /* WindowController.m */,
+				65EAED252018C629006617FE /* DraggableView.m */,
+				65EAED242018C629006617FE /* DraggableView.h */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -337,6 +342,7 @@
 				22BE36ED193B7F8800D8199F /* Defaults.m in Sources */,
 				22B1CF381937734B00D2C294 /* MenuItem.m in Sources */,
 				22B1CF301937734B00D2C294 /* App.m in Sources */,
+				65EAED262018C629006617FE /* DraggableView.m in Sources */,
 				22B1CF371937734B00D2C294 /* Menu.m in Sources */,
 				22A676E71944B140002F81FB /* File.m in Sources */,
 				22B1CF3C1937734B00D2C294 /* Window.m in Sources */,
