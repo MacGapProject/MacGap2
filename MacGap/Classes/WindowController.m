@@ -167,7 +167,7 @@
     
     NSDictionary* titlebarParams = [params objectForKey:@"titlebar"];
     
-    if(![[titlebarParams objectForKey:@"titlebar"] boolValue]) {
+    if(![[titlebarParams objectForKey:@"visible"] boolValue]) {
         self.window.titleVisibility = NSWindowTitleHidden;
         self.window.titlebarAppearsTransparent = YES;
         self.window.styleMask |= NSFullSizeContentViewWindowMask;
