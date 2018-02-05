@@ -279,7 +279,7 @@
 			dependencies = (
 			);
 			name = BrowserStackLocal;
-			productName = MG;
+			productName = BrowserStackLocal;
 			productReference = 2237E646192B0177001E1393 /* BrowserStackLocal.app */;
 			productType = "com.apple.product-type.application";
 		};
