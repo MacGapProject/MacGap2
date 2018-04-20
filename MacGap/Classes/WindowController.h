@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import <WebKit/WebKit.h>
 #import "MacGap.h"
+#import "NotificationProvider.h"
 
 @class WebViewDelegate;
 
@@ -18,6 +19,7 @@
     IBOutlet NSWindow* window;
     WebViewDelegate* webViewDelegate;
     JSContext* jsContext;
+    NotificationProvider *notificationProvider;
 }
 
 @property (nonatomic, readonly, strong) NSMutableDictionary* pluginObjects;

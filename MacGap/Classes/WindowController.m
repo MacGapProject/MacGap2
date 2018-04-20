@@ -121,6 +121,9 @@
     [self.webView setShouldCloseWithWindow:NO];
     [self.webView setGroupName:@"MacGap"];
     self.pluginObjects = [[NSMutableDictionary alloc] initWithCapacity:20];
+    
+    notificationProvider = [[NotificationProvider alloc] init];
+    [self.webView _setNotificationProvider:notificationProvider];
 }
 
 - (void) setWindowParams
