@@ -40,6 +40,7 @@
 		22B1CF431937734B00D2C294 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B1CF281937734B00D2C294 /* main.m */; };
 		22B1CF441937734B00D2C294 /* MG-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 22B1CF291937734B00D2C294 /* MG-Info.plist */; };
 		22BE36ED193B7F8800D8199F /* Defaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BE36EC193B7F8800D8199F /* Defaults.m */; };
+		3EEF80B22089DF8100F569D6 /* NotificationProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EEF80AF2089DF8100F569D6 /* NotificationProvider.m */; };
 		65EAED262018C629006617FE /* DraggableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65EAED252018C629006617FE /* DraggableView.m */; };
 /* End PBXBuildFile section */
 
@@ -107,6 +108,9 @@
 		22B1CF2A1937734B00D2C294 /* MG-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MG-Prefix.pch"; sourceTree = "<group>"; };
 		22BE36EB193B7F8800D8199F /* Defaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Defaults.h; sourceTree = "<group>"; };
 		22BE36EC193B7F8800D8199F /* Defaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Defaults.m; sourceTree = "<group>"; };
+		3EEF80AF2089DF8100F569D6 /* NotificationProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationProvider.m; sourceTree = "<group>"; };
+		3EEF80B02089DF8100F569D6 /* NotificationProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationProvider.h; sourceTree = "<group>"; };
+		3EEF80B12089DF8100F569D6 /* WebNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebNotification.h; sourceTree = "<group>"; };
 		65EAED242018C629006617FE /* DraggableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DraggableView.h; sourceTree = "<group>"; };
 		65EAED252018C629006617FE /* DraggableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DraggableView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -193,6 +197,9 @@
 		22B1CEFF1937734B00D2C294 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				3EEF80B02089DF8100F569D6 /* NotificationProvider.h */,
+				3EEF80AF2089DF8100F569D6 /* NotificationProvider.m */,
+				3EEF80B12089DF8100F569D6 /* WebNotification.h */,
 				22B1CF001937734B00D2C294 /* Commands */,
 				22B1CF1C1937734B00D2C294 /* Utils.h */,
 				22B1CF1D1937734B00D2C294 /* Utils.m */,
@@ -349,6 +356,7 @@
 				22B1CF3F1937734B00D2C294 /* WindowController.m in Sources */,
 				22B1CF3D1937734B00D2C294 /* Utils.m in Sources */,
 				22B1CF3E1937734B00D2C294 /* WebViewDelegate.m in Sources */,
+				3EEF80B22089DF8100F569D6 /* NotificationProvider.m in Sources */,
 				22B1CF3A1937734B00D2C294 /* StatusItem.m in Sources */,
 				22B1CF311937734B00D2C294 /* Clipboard.m in Sources */,
 				22B1CF2F1937734B00D2C294 /* NSData+Base64.m in Sources */,
