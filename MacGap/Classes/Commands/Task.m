@@ -76,8 +76,8 @@
     }
     
     dispatch_sync(dispatch_get_main_queue(), ^{
-           [callback.value callWithArguments:@[result]];
-            task = nil;
+            [self->callback.value callWithArguments:@[result]];
+            self->task = nil;
             self.isRunning = NO;
             self.launched = NO;
             self.arguments = nil;
@@ -140,13 +140,13 @@
           
             @try {
                 
-                [task launch];
+                [self->task launch];
                 
                 self.launched = YES;
                 
                 if(self.waitUntilExit)
                 {
-                    [task waitUntilExit];
+                    [self->task waitUntilExit];
                 }
             }
           

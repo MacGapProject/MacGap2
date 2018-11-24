@@ -110,6 +110,11 @@
     [menu removeItem:item];
 }
 
+- (void)setKey:(NSString *)keyCommand {
+    //
+}
+
+
 - (void) dealloc
 {
     NSLog(@"Menu Item Deallocated");
