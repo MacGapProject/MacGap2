@@ -11,8 +11,8 @@
 #import "Event.h"
 #import "JSON.h"
 
-typedef id (^ReturnType)();
-typedef void (^SetType)();
+typedef id (^ReturnType)(void);
+typedef void (^SetType)(void);
 
 @interface Defaults ()
 - (NSString*) addPrefix:(NSString*)key;
